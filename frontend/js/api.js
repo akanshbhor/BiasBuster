@@ -21,7 +21,7 @@ const isLocalhost =
   window.location.protocol === 'file:';
 
 // If you deploy your backend, replace this with your deployed URL.
-const API_BASE_URL = isLocalhost ? 'http://127.0.0.1:5000' : 'https://your-live-backend-url.onrender.com';
+const API_BASE_URL = isLocalhost ? 'http://127.0.0.1:5000' : 'https://biasbuster-backend-1b3h.onrender.com';
 
 /**
  * Small helper to:
