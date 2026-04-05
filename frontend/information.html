@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiasBuster Information</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=bb-20260317-1">
+
+</head>
+
+<body>
+    <div id="app-container">
+        <header>
+            <div class="logo">
+                <img src="assets/biasbuster_logo.png" alt="BiasBuster Logo">
+            </div>
+            <nav class="quick-links" aria-label="Main Navigation">
+                <a href="experience.html">Experience</a>
+                <a href="laboratory.html">Laboratory</a>
+                <a href="information.html" class="active" aria-current="page">Information</a>
+            </nav>
+        </header>
+
+        <main class="lab-content-wrapper"
+            style="padding: 32px; overflow-y: auto; display: flex; flex-direction: column; gap: 32px; justify-content: flex-start;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0 !important;">
+                <h2 style="margin: 0; margin-bottom: 0 !important; padding-bottom: 0 !important;">BiasBuster:
+                    Engineering Algorithmic Governance</h2>
+                <a href="#architect-section"
+                    style="display: inline-block; padding: 8px 16px; border: 1px solid #ccc; border-radius: 4px; text-decoration: none; color: inherit; background-color: #f9f9f9; cursor: pointer; font-family: monospace; transition: background-color 0.2s;">
+                    Scroll to Developer Info
+                </a>
+            </div>
+            <hr
+                style="margin-top: -5px !important; margin-bottom: -8px !important; border: 0; border-top: 1px solid #ccc;">
+
+            <section class="info-section">
+                <h3 style="margin-top: 0 !important; display: block;">The Problem We Solve</h3>
+                <p>BiasBuster was engineered for CodeQuest 2026 to tackle a critical vulnerability in modern,
+                    large-scale AI deployments: the silent propagation of workplace bias. As AI assumes a foundational
+                    role in drafting performance reviews, job descriptions, and core corporate communications, it
+                    frequently encodes human biases—such as gendered expectations, ageism, classism, and ableism—into
+                    its outputs. These subtle biases are difficult to catch with simple string matching. BiasBuster acts
+                    as a proactive controller for algorithmic governance, identifying and explaining these deep
+                    contextual dog-whistles to ensure ethical alignment and systemic integrity in autonomous systems.
+                </p>
+            </section>
+
+            <section class="info-section">
+                <h3>Our Multi-Tiered Intelligent Routing System</h3>
+                <p>To achieve high-fidelity detection without compromising user experience, BiasBuster utilizes a unique
+                    hybrid approach to semantic evaluation:</p>
+                <ul>
+                    <li><strong>Layer 1: High-Speed Heuristics:</strong> A lightning-fast, local NLP engine utilizes
+                        expanded synonym matching and direct database parsing (bias_database.csv) to instantly return
+                        explicit bias flags to the UI, providing immediate visual feedback in under 300ms.</li>
+                    <li><strong>Layer 2: Asynchronous Verification Daemon:</strong> A silent, backend Python daemon
+                        thread receives the text and executes a deep semantic audit. This process asynchronously calls a
+                        state-of-the-art Large Language Model (e.g., GPT-OSS 20B with automated failovers to Llama 3.3).
+                        It extracts complex contextual dog-whistles the local engine misses, categorize them with
+                        high/medium severity, and explains the impact on specific demographic groups.</li>
+                    <li><strong>Custom Deduplication Pipeline:</strong> A resilient frontend JavaScript pipeline
+                        isolates multi-layered text highlights from dynamic, deduplicated sidebar metrics, creating a
+                        seamless and logical user interface.</li>
+                </ul>
+            </section>
+
+            <div id="architect-section" class="architect-flex-wrapper"
+                style="display: flex; gap: 40px; align-items: center; margin-top: 40px;">
+                <img src="assets/profile.jpg" alt="Akansh Bhor"
+                    style="width: 250px; height: 250px; object-fit: cover; border-radius: 50%; flex: 0 0 auto;">
+                <div class="architect-text-col" style="flex: 1; max-width: 600px; text-align: left;">
+                    <strong style="display: block; font-size: 1.1rem; margin-bottom: 4px;">Akansh Bhor</strong>
+                    <span style="color: #666; font-size: 0.95rem; display: block; margin-bottom: 12px;">Founder & Lead
+                        Architect | Ctrl Studio</span>
+
+                    <p style="margin-top: 20px; font-size: 0.95rem; line-height: 1.6;">Akansh is a driven technology
+                        architect specializing in the development of elegant, high-precision solutions for complex
+                        systemic challenges. Dedicated to data autonomy and systemic integrity engineering, his work is
+                        focused on the proactive controller frameworks necessary to mitigate bias and ensure ethical
+                        alignment in autonomous systems.</p>
+
+                    <ul style="margin-top: 20px; margin-left: 20px; font-size: 0.95rem;">
+                        <li><strong>GitHub:</strong> <a href="https://github.com/akanshbhor"
+                                style="color: inherit; text-decoration: underline;">github.com/akanshbhor</a></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer style="justify-content: space-between;">
+            <div id="system-status" class="status-active" aria-live="polite">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span class="status-text">System Status: Active</span>
+            </div>
+            <div class="copyright">
+                <span class="copy-symbol">©</span> 2026 BiasBuster. Made for CodeW/Floppy's CodeQuest 2026.
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

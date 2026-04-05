@@ -1,0 +1,13 @@
+flask
+flask-cors
+python-dotenv
+openai
+google-genai
+groq
+spacy
+sentence-transformers
+torch
+scipy
+chromadb
+nltk
+faiss-cpu

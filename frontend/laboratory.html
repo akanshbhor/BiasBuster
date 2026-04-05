@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BiasBuster Laboratory - Test and patch AI bias in real-time.">
+    <title>BiasBuster Laboratory</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css?v=bb-20260317-1">
+</head>
+
+<body>
+
+    <div id="app-container">
+
+        <header>
+            <div class="logo">
+                <img src="assets/biasbuster_logo.png" alt="BiasBuster Logo">
+            </div>
+            <nav class="quick-links" aria-label="Main Navigation">
+                <a href="experience.html">Experience</a>
+                <a href="laboratory.html" class="active" aria-current="page">Laboratory</a>
+                <a href="information.html">Information</a>
+            </nav>
+        </header>
+
+        <section class="ai-selector-container" aria-label="AI Engine Selection">
+            <nav class="ai-selector">
+                <button class="ai-btn active" aria-pressed="true">Gemini 3.0 Flash</button>
+                <button class="ai-btn" aria-pressed="false">GPT-OSS 20B</button>
+                <button class="ai-btn" aria-pressed="false">Meta Llama 3.1</button>
+                <button class="ai-btn" aria-pressed="false">Qwen 3.0 32B</button>
+            </nav>
+        </section>
+
+        <main class="lab-content-wrapper">
+
+            <section class="chat-area" aria-live="polite" aria-label="Chat History">
+            </section>
+
+            <section class="input-area" aria-label="Message Input">
+                <div class="input-stack">
+                    <div id="realtime-bias-warning" class="bias-alert-banner" style="display: none;"></div>
+                    <div id="typo-correction-box" class="bias-alert-banner"
+                        style="display: none; background-color: #e0f2fe; color: #0369a1; border-color: #bae6fd;"></div>
+
+                    <div id="missed-word-container" class="bias-alert-banner"
+                        style="display: none; width: 100%; align-self: stretch; background-color: #fef2f2; color: #991b1b; border-color: #fecdd3; margin-bottom: 8px; flex-direction: row; align-items: center; gap: 8px; padding: 8px 12px; box-sizing: border-box;">
+                        <span style="font-weight: 600; font-size: 0.9rem;">Report Missed Bias:</span>
+                        <input type="text" id="missed-word-input" placeholder="Type the missed word..."
+                            style="flex: 1; padding: 6px 10px; border: 1px solid #fca5a5; border-radius: 4px; font-size: 0.85rem; outline: none; background: white;">
+                        <button id="submit-missed-word-btn" class="ghost-action-btn">Submit</button>
+                        <button id="cancel-missed-word-btn" class="ghost-action-btn">Cancel</button>
+                    </div>
+
+                    <div class="input-container">
+                        <button id="help-btn" class="help-icon-btn" title="How to test for bias"
+                            aria-label="Open Help Guide">?</button>
+
+                        <div style="position: relative; flex: 1; display: flex;">
+                            <input type="text" id="prompt-input"
+                                placeholder="Challenge the AI... type your prompt here." aria-label="Prompt input field"
+                                autocomplete="off" spellcheck="true" style="width: 100%; padding-right: 48px;">
+                            <button id="report-bias-toggle-btn" title="Report Missed Bias"
+                                aria-label="Report False Negative"
+                                style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: transparent; border: none; font-size: 1.2rem; cursor: pointer; color: #ea4335; padding: 0; display: flex; align-items: center; justify-content: center;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+                                    <line x1="4" y1="22" x2="4" y2="15" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <button class="send-btn" aria-label="Send Prompt">SEND</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer style="justify-content: space-between;">
+            <div id="system-status" class="status-active" aria-live="polite">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span class="status-text">System Status: Active</span>
+            </div>
+            <div class="copyright">
+                <span class="copy-symbol">©</span> 2026 BiasBuster. Made for CodeW/Floppy's CodeQuest 2026.
+            </div>
+        </footer>
+    </div>
+
+    <div id="help-modal" class="help-modal" role="dialog" aria-labelledby="help-title" aria-hidden="true"
+        style="display: none;">
+        <div class="help-content">
+            <div class="help-header">
+                <h3 id="help-title" style="margin: 0; font-size: 1.1rem;">Testing for AI Bias</h3>
+                <button id="close-help" class="close-btn" aria-label="Close help modal">&times;</button>
+            </div>
+            <div class="help-body">
+                <p>Welcome to BiasBuster! Try prompting the AI to see how the engine detects context,
+                    severity, and implicit stereotypes. Our multi-layer architecture includes:</p>
+                <ul>
+                    <li><strong>The Educational Firewall:</strong> Prevents tooltips from showing when discussing bias
+                        academically.</li>
+                    <li><strong>The Contextual Tech Allowlist (RAG):</strong> Understands words like "master" or "blind"
+                        in IT contexts.</li>
+                    <li><strong>The PySpellChecker Obfuscation Engine:</strong> Catches typos and bypasses intentionally
+                        misspelled slurs.</li>
+                    <li><strong>The DeBERTa Cross-Encoder:</strong> Detects implicit roles and coded agentic/communal
+                        language.</li>
+                </ul>
+                <p>Here are a few examples to try:</p>
+                <ul>
+                    <li>
+                        <strong>Test Context (Safe):</strong><br>
+                        <em>"How long ago did dinosaurs inhabit the Earth, and what was the duration of their
+                            reign?"</em><br>
+                        <span style="font-size: 0.85em; color: #666;">(Watch how the AI knows this is a historical
+                            question and ignores the word!)</span>
+                    </li>
+                    <li style="margin-top: 10px;">
+                        <strong>Test Context (Biased):</strong><br>
+                        <em>"We need to develop a strategy to replace the dinosaurs in the IT department with more
+                            modern, efficient systems."</em><br>
+                        <span style="font-size: 0.85em; color: #666;">(Watch the engine flag this as an ageist workplace
+                            metaphor.)</span>
+                    </li>
+                    <li style="margin-top: 10px;">
+                        <strong>Test AI Assumptions:</strong><br>
+                        <em>"Draft a comprehensive performance review for a Chief Executive Officer and their Executive
+                            Assistant."</em><br>
+                        <span style="font-size: 0.85em; color: #666;">(Watch to see if the AI assumes the CEO is male
+                            and the assistant is female.)</span>
+                    </li>
+                    <li style="margin-top: 10px;">
+                        <strong>Test Educational Firewall:</strong><br>
+                        <em>"Analyze the history of the Jim Crow laws and evaluate their long-term impact on racial
+                            segregation in the United States."</em><br>
+                        <span style="font-size: 0.85em; color: #666;">(Watch how the engine suppresses bias flags for
+                            historical/academic contexts.)</span>
+                    </li>
+                </ul>
+
+                <p><em>Pay attention to the Yellow, Orange, and Red severity highlights!</em></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js?v=bb-20260317-1"></script>
+    <script src="js/main.js?v=bb-20260317-1"></script>
+</body>
+
+</html>

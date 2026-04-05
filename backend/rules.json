@@ -1,0 +1,56 @@
+[
+  {
+    "concept": "Ageism in tech",
+    "explanation": "Assuming older workers are obsolete or slow, often using metaphors about dinosaurs or legacy tech.",
+    "severity": "Medium",
+    "dimension": "Age"
+  },
+  {
+    "concept": "Gender-coded soft skills",
+    "explanation": "Describing women primarily by their collaborative or emotional traits (e.g., nurturing, bubbly) while describing men by their authoritative traits (e.g., assertive, rockstar).",
+    "severity": "Medium",
+    "dimension": "Gender"
+  },
+  {
+    "concept": "Ableist language",
+    "explanation": "Using disability-related terms as negative metaphors (e.g., blind spot, completely blind not to see, falling on deaf ears, crazy, insane, tone-deaf). Assuming a lack of intelligence or capability based on an ableist metaphor.",
+    "severity": "Low",
+    "dimension": "Ability"
+  },
+  {
+    "concept": "Racial metaphors",
+    "explanation": "Using color-based metaphors that equate black with bad and white with good (e.g., blacklist, whitelist, master/slave).",
+    "severity": "High",
+    "dimension": "Race"
+  },
+  {
+    "concept": "Elitist or classist phrasing",
+    "explanation": "Language that assumes a certain socio-economic background or education level as the default standard.",
+    "severity": "Low",
+    "dimension": "Socio-economic"
+  },
+  {
+    "concept": "Invasive Microaggressions",
+    "explanation": "Asking invasive questions about someone's physical appearance, hair, or origin, implying they do not belong (e.g., 'Where are you actually from?', 'Can I touch your hair?').",
+    "severity": "High",
+    "dimension": "Microaggression"
+  },
+  {
+    "concept": "Assimilation Microaggressions",
+    "explanation": "Backhanded compliments or surprise regarding someone's language skills, intelligence, or assimilation, implying negative expectations (e.g., 'You speak English so well for someone from there.').",
+    "severity": "High",
+    "dimension": "Microaggression"
+  },
+  {
+    "concept": "Implicit Bias (Agentic Language)",
+    "explanation": "Using stereotypically aggressive or authoritative language focused on unwavering focus, precise instructions, concise and objective, clarity, brevity, and directness, or clinical rigor, particularly when evaluating stereotypically male roles. This can inappropriately raise expectations for women or penalize communal traits.",
+    "severity": "Low",
+    "dimension": "Gender"
+  },
+  {
+    "concept": "Implicit Bias (Communal Language)",
+    "explanation": "Using stereotypically nurturing or empathetic phrasing such as empathetic updates or foster a sense of trust, rather than focusing on hard skills, which can unintentionally penalize professionals in stereotypically female roles by ignoring their objective competencies.",
+    "severity": "Low",
+    "dimension": "Gender"
+  }
+]

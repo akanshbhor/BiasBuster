@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="BiasBuster Experience — A gamified Resume Auditor that teaches you how AI ageism bias works in hiring.">
+    <title>BiasBuster — Resume Auditor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=bb-20260403-3">
+    <link rel="stylesheet" href="css/experience.css?v=bb-20260403-3">
+</head>
+
+<body>
+    <div id="app-container">
+        <header>
+            <div class="logo">
+                <img src="assets/biasbuster_logo.png" alt="BiasBuster Logo">
+            </div>
+            <nav class="quick-links" aria-label="Main Navigation">
+                <a href="experience.html" class="active" aria-current="page">Experience</a>
+                <a href="laboratory.html">Laboratory</a>
+                <a href="information.html">Information</a>
+            </nav>
+        </header>
+
+        <!-- ========== GAME AREA ========== -->
+        <main class="lab-content-wrapper game-wrapper">
+
+            <!-- ===== STATE 1: MISSION BRIEFING (visible on load) ===== -->
+            <div id="state-briefing" class="game-state active" style="padding: 16px;">
+                <section class="briefing-container" style="flex: 1; overflow-y: auto;">
+                    <h1 class="briefing-title">Mission Briefing: Why AI Can&#x27;t Think Outside Our Box?</h1>
+
+                    <div class="briefing-content">
+                        <p>
+                            Welcome to BiasBuster. Today, we confront the reality of <strong>Coded Bias</strong>.
+                            Artificial
+                            intelligence models are trained on massive datasets derived from human history. Because our
+                            history is flawed, the AI naturally absorbs, amplifies, and perpetuates these historical
+                            prejudices.
+                        </p>
+                        <p>
+                            A major challenge we face is the reliance on <strong>Proxy Variables</strong>. An AI might
+                            avoid
+                            explicitly filtering candidates by age, gender, or race, but it often uncovers hidden
+                            proxies—like graduation dates, linguistic style, or zip codes—to recreate those exact same
+                            discriminatory boundaries.
+                        </p>
+                        <p>
+                            Our objective is clear: We need a robust <strong>Human-in-the-Loop</strong> system.
+                            Technology
+                            alone cannot solve a human problem. It requires intentional oversight, continuous auditing,
+                            and
+                            your critical thinking to override algorithmic assumptions.
+                        </p>
+                        <p>
+                            Prepare to test your judgment in the simulation. We just trained a new AI to screen resumes
+                            for a Senior Developer role. You have 60 seconds to review its decisions on 10 candidates.
+                            The AI is highly confident, but it's your job to catch any mistakes. Good luck.
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Briefing Audio (auto-plays on load) -->
+            <audio id="bias-audio" src="./assets/briefing.mp3" autoplay></audio>
+
+            <!-- ===== STATE 2: ACTIVE GAME (hidden until audio ends) ===== -->
+            <div id="state-game" class="game-state"
+                style="padding: 12px; gap: 8px; height: 100%; box-sizing: border-box; overflow: hidden;">
+                <!-- 1. Title Banner -->
+                <div class="schematic-banner" style="margin: 0;">
+                    THE AUDITOR: RESUME REVIEW MODULE
+                </div>
+
+                <!-- 2. The Candidate Dossier -->
+                <!-- Card Slot -->
+                <section class="schematic-card" id="card-container" style="flex: 1; margin: 0; position: relative; overflow: hidden;">
+                    <div id="active-card" style="display: flex; flex-direction: column; width: 100%; height: 100%;">
+                        <div class="dossier-header-row">
+                            <div class="dossier-header-box">CANDIDATE DOSSIER: <span id="candidate-progress-header">1/10</span></div>
+                            <div id="ai-badge" class="ai-decision-banner">
+                                REJECTED
+                            </div>
+                        </div>
+                        <div class="dossier-name-row">
+                            NAME: <span id="candidate-name">Jane Doe</span>
+                        </div>
+                        <div class="dossier-grid">
+                            <!-- Left Block -->
+                            <div class="dossier-left-block">
+                                <div class="dossier-section">
+                                    <div class="section-label">EXPERIENCE:</div>
+                                    <div id="candidate-experience" class="section-content">5+ Years Lead Engineer</div>
+                                </div>
+                                <div class="dossier-section">
+                                    <div class="section-label">SKILLS:</div>
+                                    <div id="candidate-skills" class="section-content">React, Node.js</div>
+                                </div>
+                            </div>
+                            <!-- Right Block -->
+                            <div class="dossier-right-block">
+                                <div class="dossier-right-top">
+                                    <div class="section-label">APPLICANT INFO</div>
+                                    <div class="section-content" style="line-height: 1.4;">
+                                        EMAIL: <span id="candidate-email">jane@domain.com</span><br>
+                                        AGE: <span id="candidate-age">28</span><br>
+                                        GENDER: <span id="candidate-gender">FEMALE</span>
+                                    </div>
+                                </div>
+                                <div class="dossier-right-bottom">
+                                    <div class="nested-col">
+                                        <div class="section-label">GRADUATION YEAR</div>
+                                        <div id="candidate-grad" class="section-content" style="border: 1px solid var(--navy); padding: 6px; flex: 1;">2019</div>
+                                    </div>
+                                    <div class="nested-col">
+                                        <div class="section-label">UNIVERSITY</div>
+                                        <div id="candidate-university" class="section-content" style="border: 1px solid var(--navy); padding: 6px; flex: 1;">State Tech College</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ai-rationale-box">
+                            <strong>AI SYSTEM RATIONALE:</strong> <span id="ai-reason-text">...</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. The Game HUD -->
+                <section class="schematic-hud outline-hud" style="margin: 0;">
+                    <div class="hud-header">GAME HUD</div>
+                    <div class="hud-content">
+                        <div class="hud-stats">
+                            <div id="timer-display" class="hud-stat-box">TIME: 60s</div>
+                            <div id="candidate-progress" class="hud-stat-box">PROGRESS: 1/10</div>
+                        </div>
+                        <div class="hud-controls">
+                            <button id="btn-override" class="schematic-btn" aria-label="Override AI decision">
+                                OVERRIDE AI
+                            </button>
+                            <button id="btn-agree" class="schematic-btn" aria-label="Agree with AI decision">
+                                AGREE WITH AI
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ===== STATE 3: DIAGNOSTIC DASHBOARD ===== -->
+            <div id="state-diagnostic" class="game-state" style="padding: 16px;">
+                <section class="schematic-card" style="padding: 16px; flex: 1;">
+                    <h2 class="diag-title" style="margin-bottom: 10px; font-family: var(--font-mono);">Audit Complete
+                    </h2>
+                    <div id="results-screen" class="score-summary"
+                        style="margin-bottom: 15px; font-weight: bold; font-family: var(--font-mono);">
+                        Reviewed: <span id="score-reviewed">—</span> |
+                        Agreed: <span id="score-agreed">—</span> |
+                        Overridden: <span id="score-overridden">—</span>
+                    </div>
+
+                    <div class="diag-explanation">
+                        <strong>Bias Detected:</strong> The AI was rejecting highly qualified candidates while
+                        approving under-qualified ones. Because our historical training data skewed young and privileged, the AI
+                        learned to use proxies for capability.
+                    </div>
+
+                    <div class="feature-checklist-title">
+                        Training Features
+                    </div>
+                    <div class="feature-checklist">
+                        <div class="feature-item"><input type="checkbox" checked id="feature-name"> Candidate Name</div>
+                        <div class="feature-item"><input type="checkbox" checked id="feature-gender"> Gender</div>
+                        <div class="feature-item"><input type="checkbox" checked id="feature-exp"> Years of Experience</div>
+                        <div class="feature-item"><input type="checkbox" checked id="feature-skills"> Technical Skills</div>
+                        <div class="feature-item"><input type="checkbox" checked id="feature-email"> Email Domain</div>
+                        <div class="feature-item"><input type="checkbox" checked id="feature-grad"> Graduation Year</div>
+                        <div class="feature-item"><input type="checkbox" checked id="feature-univ"> University</div>
+                    </div>
+                </section>
+                <section class="schematic-hud outline-hud">
+                    <div class="hud-header">GAME HUD</div>
+                    <div class="hud-content">
+                        <div class="hud-action-row">
+                            <span>ACTION REQUIRED: Uncheck biased proxies to calibrate the AI model.</span>
+                            <button id="btn-deploy-patch" class="schematic-btn">
+                                DEPLOY FAIRNESS PATCH
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ===== STATE 4: REWARD ===== -->
+            <div id="state-reward" class="game-state" style="padding: 16px;">
+                <section class="schematic-card"
+                    style="padding: 24px; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <h2 class="reward-title"
+                        style="margin-bottom: 24px; font-family: var(--font-mono); font-size: 1.5rem;">Patch Deployed!
+                    </h2>
+                    <div class="reward-text" style="max-width: 600px; line-height: 1.6; font-family: var(--font-mono);">
+                        The AI has been successfully blinded to age proxies and is now scoring
+                        candidates based on merit — experience, skills, and qualifications.
+                        You've demonstrated exactly how a Human-in-the-Loop auditor can catch and fix algorithmic bias
+                        before it causes real-world harm.
+                    </div>
+                </section>
+                <section class="schematic-hud outline-hud">
+                    <div class="hud-header">GAME HUD</div>
+                    <div class="hud-content">
+                        <div class="hud-action-row">
+                            <span>ACCESS GRANTED: Review the debrief document to complete the module.</span>
+                            <button id="btn-unlock-playbook" class="schematic-btn">
+                                UNLOCK FAIRNESS PLAYBOOK
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ===== STATE 5: PLAYBOOK ===== -->
+            <div id="state-playbook" class="game-state playbook-wrapper" style="padding: 16px;">
+                <section class="schematic-card playbook-container" style="flex: 1; overflow-y: auto;">
+                    <div class="playbook-header">
+                        AI FAIRNESS PLAYBOOK: POST-AUDIT DEBRIEF
+                    </div>
+                    <div class="playbook-content">
+                        <p class="playbook-core-principle">
+                            <strong>Core Principle:</strong> Correlation does not equal qualification. AI models are highly efficient at finding patterns, but without human oversight, they will optimize for historical biases and systemic inequalities.
+                        </p>
+                        
+                        <div class="playbook-section">
+                            <h3>The Proxy Threat</h3>
+                            <ul class="playbook-list">
+                                <li><strong>Ageism Proxies:</strong> Legacy email domains (@aol.com) and distant graduation years are often used to filter out older, highly experienced workers.</li>
+                                <li><strong>Pedigree & Class Bias:</strong> Over-indexing on elite universities or affluent extracurriculars while ignoring proven skills from non-traditional pathways (bootcamps).</li>
+                                <li><strong>Caregiver Penalties:</strong> Treating resume gaps purely as "attrition risk," which disproportionately penalizes women and family caregivers.</li>
+                                <li><strong>Cultural & Racial Bias:</strong> Filtering candidates based on non-Western names or international universities due to skewed historical training data.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="playbook-section">
+                            <h3>The Auditor's Checklist (Actionable Takeaways)</h3>
+                            <ol class="playbook-list">
+                                <li><strong>Demand Explainability</strong> (Never accept "Computer Says No").</li>
+                                <li><strong>Audit the Training Features</strong> (Strip out protected class proxies).</li>
+                                <li><strong>Isolate Objective Metrics</strong> (Focus strictly on technical skills and years of experience).</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ===== GAME OVER SCREEN ===== -->
+            <div id="game-over-screen" style="display: none;">
+                <img src="./assets/game_over.png" alt="GAME OVER!" id="game-over-image">
+                <p>Tip: Use the arrow keys (&larr;, &rarr;) to accept or override.</p>
+                <p class="retry-prompt">Click anywhere to retry.</p>
+            </div>
+
+        </main>
+        <!-- /game-wrapper -->
+
+        <footer style="justify-content: space-between;">
+            <div id="system-status" class="status-active" aria-live="polite">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span class="status-text">System Status: Active</span>
+            </div>
+            <div class="copyright">
+                <span class="copy-symbol">©</span> 2026 BiasBuster. Made for CodeW/Floppy's CodeQuest 2026.
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Audio Elements for AI Decisions -->
+    <audio id="audio-accepted" src="./assets/accepted_audio.mp3"></audio>
+    <audio id="audio-rejected" src="./assets/rejected_audio.mp3"></audio>
+    <audio id="audio-timer" src="./assets/timer.mp3" loop></audio>
+
+    <script src="js/experience.js?v=bb-20260331-1"></script>
+</body>
+
+</html>

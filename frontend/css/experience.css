@@ -1,0 +1,568 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap');
+
+:root {
+    --navy: #0A192F;
+    --bg: #f8f9fa;
+    --red: #B91C1C;
+    --btn-bg: #f3f4f6;
+    --font-mono: 'Roboto Mono', monospace;
+    --border-thickness: 1px;
+    --border-radius: 4px;
+}
+
+/* Because the global styles apply background colors, we override the game wrapper's background */
+.game-wrapper {
+    background-color: var(--bg) !important;
+    color: var(--navy);
+    font-family: var(--font-mono);
+}
+
+.game-state {
+    display: none;
+}
+
+.game-state.active {
+    display: flex;
+}
+
+#state-briefing.active {
+    justify-content: center;
+    align-items: center;
+}
+
+#state-game.active {
+    flex-direction: column;
+}
+
+/* Schematic Banner */
+.schematic-banner {
+    border: var(--border-thickness) solid var(--navy);
+    border-radius: var(--border-radius);
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: var(--font-mono);
+}
+
+/* Base Card structure */
+.schematic-card {
+    border: var(--border-thickness) solid var(--navy);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    background: #ffffff;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+/* ===== DOSSIER GRID — State 2 ===== */
+
+/* Header row: CANDIDATE DOSSIER + stamp */
+.dossier-header-row {
+    padding: 8px 16px;
+    border-bottom: var(--border-thickness) solid var(--navy);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    background: #ffffff;
+    position: relative;
+}
+
+/* Name row */
+.dossier-name-row {
+    padding: 10px 16px;
+    border-bottom: var(--border-thickness) solid var(--navy);
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+    background: #ffffff;
+}
+
+/* Main 2-column grid */
+.dossier-grid {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    border-bottom: var(--border-thickness) solid var(--navy);
+}
+
+/* Left block */
+.dossier-left-block {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    border-right: var(--border-thickness) solid var(--navy);
+}
+
+/* Generic dossier cell */
+.dossier-section {
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-bottom: var(--border-thickness) solid var(--navy);
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.dossier-section:last-child {
+    border-bottom: none;
+}
+
+.section-label {
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 1.3;
+}
+
+.section-content {
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+
+/* Right block */
+.dossier-right-block {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.dossier-right-top {
+    padding: 10px 16px;
+    border-bottom: var(--border-thickness) solid var(--navy);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.dossier-right-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.nested-col {
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.nested-col:first-child {
+    border-right: var(--border-thickness) solid var(--navy);
+}
+
+.empty-box {
+    flex: 1;
+    border: 1px solid var(--navy);
+    min-height: 24px;
+}
+
+/* AI Logic Rationale Block */
+.ai-rationale-box {
+    margin: 16px;
+    padding: 12px 16px;
+    background-color: #f4f4f9;
+    border-radius: 8px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.85rem;
+    color: #000000;
+    line-height: 1.4;
+}
+
+.ai-rationale-box strong {
+    letter-spacing: 0.5px;
+}
+
+/* Stamp badge styling */
+.ai-decision-banner {
+    border: 2px solid #A02020;
+    color: #A02020;
+    padding: 4px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1.15rem;
+    background: #ffffff;
+    letter-spacing: 2px;
+    white-space: nowrap;
+
+    /* Overlap positioning */
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    transform: translateY(50%);
+    z-index: 10;
+}
+
+.badge-rejected {
+    color: #A02020 !important;
+    border-color: #A02020 !important;
+}
+
+.badge-accepted {
+    color: #208020 !important;
+    border-color: #208020 !important;
+}
+
+/* ===== OUTLINE HUD ===== */
+.outline-hud {
+    border: var(--border-thickness) solid var(--navy);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.hud-header {
+    padding: 6px 16px;
+    border-bottom: var(--border-thickness) solid var(--navy);
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.hud-content {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 16px;
+    align-items: center;
+}
+
+.hud-content.centered {
+    justify-content: center;
+}
+
+.hud-stats,
+.hud-controls {
+    display: flex;
+    gap: 12px;
+    height: 100%;
+}
+
+.hud-stat-box {
+    border: var(--border-thickness) solid var(--navy);
+    border-radius: calc(var(--border-radius) / 2);
+    padding: 6px 16px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 0.85rem;
+    background: #ffffff;
+}
+
+/* Buttons */
+button.schematic-btn {
+    border: var(--border-thickness) solid var(--navy);
+    border-radius: calc(var(--border-radius) / 2);
+    background: var(--btn-bg);
+    color: var(--navy);
+    padding: 6px 20px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background 0.1s ease, color 0.1s ease;
+    white-space: nowrap;
+}
+
+button.schematic-btn:hover:not(:disabled) {
+    background: #d4d4d4 !important;
+    color: #000000 !important;
+    border: 1px solid #000000 !important;
+}
+
+.proxy-unchecked-bg {
+    background-color: var(--navy);
+    color: var(--bg);
+}
+
+button#btn-start-audit:hover:not(:disabled) {
+    background-color: #d4d4d4 !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+#landing-visual {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+#click-prompt {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    margin-top: 24px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* ===== GAME OVER SCREEN ===== */
+#game-over-screen {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    padding: 40px 24px;
+    background-color: var(--bg, #f8f9fa);
+    gap: 16px;
+    cursor: pointer;
+}
+
+#game-over-image {
+    display: block;
+    margin: 0 auto 40px auto;
+    max-width: 60%;
+}
+
+#game-over-screen p {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--navy, #0A192F);
+    margin: 0;
+    line-height: 1.5;
+}
+
+#game-over-screen .retry-prompt {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-top: 8px;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+/* ===== SWIPE ANIMATIONS ===== */
+@keyframes swipeLeft {
+    0% {
+        transform: translateX(0) rotate(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-120%) rotate(-8deg);
+        opacity: 0;
+    }
+}
+
+@keyframes swipeRight {
+    0% {
+        transform: translateX(0) rotate(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(120%) rotate(8deg);
+        opacity: 0;
+    }
+}
+
+.swipe-left {
+    animation: swipeLeft 0.35s ease-in forwards;
+}
+
+.swipe-right {
+    animation: swipeRight 0.35s ease-in forwards;
+}
+
+/* ===== CONFETTI ===== */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.confetti-piece {
+    position: absolute;
+    top: -10px;
+    animation-name: confettiFall;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ===== DEPLOY PATCH BUTTON STATES ===== */
+#btn-deploy-patch {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ===== STRICT DIAGNOSTIC & REWARD MONOCHROME ===== */
+#state-diagnostic, #state-reward {
+    color: #000000;
+    flex-direction: column;
+    gap: 16px;
+}
+#state-reward.active {
+    justify-content: center;
+    flex-grow: 1;
+}
+#state-diagnostic .schematic-card,
+#state-diagnostic .outline-hud,
+#state-reward .schematic-card,
+#state-reward .outline-hud {
+    border-color: #000000;
+}
+#state-diagnostic .outline-hud,
+#state-reward .outline-hud {
+    width: 100%;
+    box-sizing: border-box;
+}
+#state-diagnostic .hud-header,
+#state-reward .hud-header {
+    background-color: #f0f0f0;
+    color: #000000;
+    border-bottom-color: #000000;
+}
+#state-diagnostic .hud-content,
+#state-reward .hud-content {
+    padding-bottom: 0px;
+}
+#state-diagnostic .hud-action-row,
+#state-reward .hud-action-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px 20px;
+    box-sizing: border-box;
+}
+#state-diagnostic .hud-action-row span,
+#state-reward .hud-action-row span {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+#state-diagnostic .schematic-btn,
+#state-reward .schematic-btn {
+    border-color: #000000;
+    color: #000000;
+    cursor: pointer;
+}
+#state-diagnostic .schematic-btn:hover,
+#state-reward .schematic-btn:hover {
+    background-color: #eeeeee;
+    border-color: #333;
+    color: #000000;
+}
+#state-diagnostic .diag-explanation {
+    border: 2px solid #000000;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: var(--font-mono);
+}
+#state-diagnostic .feature-checklist-title {
+    font-weight: bold;
+    margin-bottom: 4px;
+    font-family: var(--font-mono);
+}
+#state-diagnostic .feature-checklist {
+    border-top: 2px solid #000000;
+    padding-top: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    font-family: var(--font-mono);
+}
+#state-diagnostic .feature-item {
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+#state-diagnostic .feature-item.unchecked {
+    background-color: #f5f5f5;
+    color: #666666;
+    text-decoration: line-through;
+}
+
+/* ===== STATE 5: PLAYBOOK ===== */
+#state-playbook {
+    flex-direction: column;
+}
+.playbook-container {
+    background-color: #ffffff;
+    color: #000000;
+    text-align: left;
+    overflow-y: auto;
+    border: 2px solid #000;
+    padding-bottom: 16px;
+}
+.playbook-header {
+    border-bottom: 4px solid #000000;
+    padding: 10px 24px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    background-color: #f0f0f0;
+}
+.playbook-content {
+    padding: 16px 24px;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+.playbook-core-principle {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+    padding: 10px 16px;
+    border-left: 4px solid #000000;
+    background-color: #f8f8f8;
+}
+.playbook-section {
+    margin-bottom: 12px;
+}
+.playbook-section h3 {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    border-bottom: 1px solid #000;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+}
+.playbook-list {
+    margin-left: 24px;
+    margin-bottom: 8px;
+}
+.playbook-list li {
+    margin-bottom: 5px;
+}

@@ -1,0 +1,1025 @@
+/* CSS Reset & Variables for Softened B&W Theme */
+
+:root {
+    --border-color: #000000;
+    --border-width: 1px;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --bg-color: #f9f9f9;
+    --panel-bg: #ffffff;
+    --slight-dark: #e6e6e6;
+    --text-color: #000000;
+    --warning-red: #d32f2f;
+    --warning-bg: #fff5f5;
+    --hover-gray: #f2f2f2;
+    /* Primary accent for BiasBuster (used on tooltips, etc.) */
+    --primary-purple: #7c3aed;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Main Application Container */
+#app-container {
+    background-color: var(--panel-bg);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: 1200px;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* --- 1. Header --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: var(--border-width) solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.logo {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.logo img {
+    height: 180px;
+    display: block;
+}
+
+/* Real-time bias warning banner */
+.bias-alert-banner {
+    display: none;
+    /* JS toggles to flex when active */
+    align-self: flex-start;
+    align-items: center;
+    background-color: #fffbeb;
+    /* Soft warning orange/yellow */
+    color: #b45309;
+    /* Dark orange text */
+    border: 1px solid #fde68a;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: fit-content;
+    animation: slideUpFade 0.3s ease-out forwards;
+}
+
+.bias-alert-banner strong {
+    color: #9a3412;
+    margin-left: 4px;
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Typo correction box action buttons */
+.typo-action-btn {
+    background-color: transparent;
+    color: #0ea5e9;
+    border: 1px solid #0ea5e9;
+    border-radius: 4px;
+    padding: 2px 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.typo-action-btn:hover {
+    background-color: #bae6fd;
+    /* Lightly darkens/fills with a soft sky blue */
+}
+
+/* 1. Add this to your main text container (e.g., .chat-bubble or .message-content) */
+.ai-text-content {
+    line-height: 1.6;
+    /* Increases spacing between lines to prevent overlap */
+}
+
+/* 2. Update your existing highlight class */
+.bias-highlight {
+    padding: 1px 4px;
+    /* Slightly reduced top/bottom padding */
+    border-radius: 4px;
+    font-weight: 500;
+    display: inline-block;
+    vertical-align: middle;
+    /* Aligns the pill better within the line */
+    margin: 1px 0;
+    /* Adds a tiny bit of vertical clearance */
+    line-height: normal;
+    /* Ensures the pill itself doesn't inherit the 1.6 spacing */
+    cursor: help;
+}
+
+/* Yellow for Medium / Explicit Bias */
+.highlight-yellow {
+    background-color: #FFF9C4;
+    color: #000;
+}
+
+/* Blue for Low / Agentic Bias */
+.highlight-blue {
+    background-color: #CCE5FF;
+    color: #000;
+}
+
+/* Red for High / Communal Bias */
+.highlight-red {
+    background-color: #FFCCCC;
+    color: #000;
+}
+
+/* Back-compat: older severity classes map to explicit styling */
+.bias-high,
+.bias-medium,
+.bias-low {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Educational Tooltip & Highlight Container */
+.bias-highlight-container {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+/* Floating Card Tooltip */
+.custom-tooltip-box {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: var(--panel-bg);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--radius-sm);
+    box-shadow: none;
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 12px;
+    line-height: 1.3;
+    padding: 0;
+    z-index: 1000;
+    pointer-events: none;
+
+    width: max-content;
+    max-width: 250px;
+    min-width: 150px;
+    text-align: left;
+    white-space: normal !important;
+
+    transition: opacity 0.2s ease, visibility 0.2s ease, bottom 0.2s ease;
+    overflow: hidden;
+}
+
+/* Inner content padding */
+.tooltip-inner {
+    padding: 8px 12px;
+}
+
+/* Tooltip title */
+.tooltip-word {
+    font-weight: 700;
+    font-size: 13px;
+    color: #000000;
+    margin-bottom: 8px;
+}
+
+/* Tooltip metadata rows */
+.tooltip-row {
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: #000000;
+}
+
+.tooltip-row:last-child {
+    margin-bottom: 0;
+}
+
+.tooltip-row strong {
+    font-weight: 700;
+    color: #000000;
+}
+
+/* Suggestion line */
+.tooltip-suggestion {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #000000;
+}
+
+.bias-highlight-container:hover .custom-tooltip-box,
+.bias-highlight-container.tooltip-active .custom-tooltip-box {
+    visibility: visible;
+    opacity: 1;
+    bottom: calc(100% + 12px);
+    pointer-events: auto;
+}
+
+/* Report False Positive Button Styling */
+.fp-btn-container {
+    margin-top: 10px;
+}
+
+.report-fp-btn {
+    display: block;
+    margin: 10px auto 0;
+    width: 90%;
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid #000000;
+    color: #000000;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.report-fp-btn:hover {
+    background-color: #f0f0f0;
+    color: #000000;
+}
+
+/* System Status indicator */
+#system-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: #000;
+    /* Changed to black to match theme */
+    border: 1px solid #000;
+    /* Solid black border */
+    background-color: transparent;
+    /* Flat look */
+    padding: 6px 12px;
+    border-radius: 8px;
+    /* Match the rounded corners of the other buttons */
+    box-shadow: none;
+    /* Removed the shadow */
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* States */
+.status-active .status-dot {
+    background-color: #22c55e;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    animation: pulse-green 2s infinite;
+}
+
+.status-active .status-text {
+    color: #22c55e;
+}
+
+.status-scanning .status-dot {
+    background-color: #f59e0b;
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+    animation: pulse-yellow 1.5s infinite;
+}
+
+.status-scanning .status-text {
+    color: #f59e0b;
+}
+
+.status-error .status-dot {
+    background-color: #ef4444;
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    animation: pulse-red 2s infinite;
+}
+
+.status-error .status-text {
+    color: #ef4444;
+}
+
+/* Animations */
+@keyframes pulse-green {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
+}
+
+@keyframes pulse-yellow {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(245, 158, 11, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+    }
+}
+
+@keyframes pulse-red {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+.quick-links {
+    display: flex;
+    gap: 24px;
+}
+
+.quick-links a {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.quick-links a:hover {
+    opacity: 0.6;
+}
+
+.quick-links a.active {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* --- 2. AI Selector Row --- */
+.ai-selector-container {
+    padding: 16px 24px;
+    border-bottom: var(--border-width) solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.ai-selector {
+    display: flex;
+    gap: 12px;
+}
+
+.ai-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    border: var(--border-width) solid var(--border-color);
+    background-color: var(--panel-bg);
+    color: var(--text-color);
+    font-size: 0.85rem;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.ai-btn:hover {
+    background-color: var(--hover-gray);
+}
+
+.ai-btn.active {
+    background-color: var(--slight-dark);
+    font-weight: 600;
+}
+
+/* --- Main Lab Content Wrapper --- */
+.lab-content-wrapper {
+    flex-grow: 1;
+    margin: 20px 24px;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* --- 3. Chat Area --- */
+.chat-area {
+    flex-grow: 1;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    scroll-behavior: smooth;
+}
+
+.message {
+    max-width: 85%;
+    padding: 20px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border-radius: var(--radius);
+    border: var(--border-width) solid var(--border-color);
+}
+
+.message.user {
+    align-self: flex-end;
+    background-color: var(--slight-dark);
+    border-bottom-right-radius: 0;
+}
+
+.message.ai-container {
+    align-self: flex-start;
+    background-color: var(--panel-bg);
+    border-bottom-left-radius: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+/* --- NEW: AI Action Icon Bar --- */
+.ai-action-bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* Centered icons vertically */
+    gap: 8px;
+    margin-top: auto;
+    /* Pushes to the bottom if content is tall */
+    padding-top: 12px;
+    border-top: 1px dashed var(--slight-dark);
+}
+
+.action-icon-btn {
+    background-color: var(--panel-bg);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-color);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.action-icon-btn:hover {
+    background-color: var(--hover-gray);
+}
+
+.action-icon-btn:active {
+    transform: scale(0.95);
+}
+
+.action-icon-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    display: block;
+    /* Removes baseline spacing issues */
+}
+
+/* --- 4. HITL Warning Box --- */
+.warning-box {
+    background-color: var(--warning-bg);
+    border: 1px solid var(--warning-red);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+}
+
+.warning-title {
+    color: var(--warning-red);
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.warning-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.warn-btn {
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    border: var(--border-width) solid var(--border-color);
+    background-color: var(--panel-bg);
+    color: var(--text-color);
+    text-transform: uppercase;
+    transition: background-color 0.2s;
+}
+
+.warn-btn:hover {
+    background-color: var(--hover-gray);
+}
+
+/* --- 5. Input Area --- */
+.input-area {
+    padding: 20px 24px;
+    background-color: var(--panel-bg);
+    border-top: var(--border-width) solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.input-stack {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input-container {
+    display: flex;
+    gap: 12px;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    padding: 14px 20px;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-family: inherit;
+    outline: none;
+    color: var(--text-color);
+    background-color: var(--panel-bg);
+    transition: placeholder 0.3s ease-in-out;
+}
+
+input[type="text"]::placeholder {
+    color: #666666;
+    transition: opacity 0.3s;
+}
+
+.send-btn {
+    padding: 0 32px;
+    background-color: var(--slight-dark);
+    color: var(--text-color);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.send-btn:hover {
+    background-color: #d4d4d4;
+}
+
+/* --- 6. Footer --- */
+footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 16px 24px;
+    flex-shrink: 0;
+}
+
+.copyright {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.copy-symbol {
+    font-size: 1.25rem;
+    line-height: 0;
+    transform: translateY(-1px);
+}
+
+/* --- 7. Help Modal & Button --- */
+.help-icon-btn {
+    background: var(--panel-bg);
+    border: var(--border-width) solid var(--border-color);
+    color: var(--text-color);
+    border-radius: var(--radius);
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+    font-family: inherit;
+    flex-shrink: 0;
+}
+
+.help-icon-btn:hover {
+    background-color: var(--hover-gray);
+}
+
+.help-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.help-content {
+    background-color: var(--panel-bg);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--radius);
+    width: 60vw;
+    max-height: 90vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    overflow-y: auto;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.help-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: var(--border-width) solid var(--slight-dark);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: var(--warning-red);
+}
+
+.help-body p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.help-body ul {
+    margin-left: 20px;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    background-color: var(--slight-dark);
+    padding: 12px 12px 12px 30px;
+    border-radius: var(--radius-sm);
+}
+
+.help-body li {
+    margin-bottom: 8px;
+}
+
+/* --- 8. Dynamic Patch Modal --- */
+.patch-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.patch-modal-content {
+    background-color: var(--panel-bg);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 24px;
+    width: 90%;
+    max-width: 450px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.patch-modal-title {
+    margin: 0;
+    font-size: 1.1rem;
+    text-align: center;
+    border-bottom: var(--border-width) solid var(--border-color);
+    padding-bottom: 16px;
+    margin-bottom: 8px;
+}
+
+.modal-btn {
+    width: 100%;
+    padding: 14px;
+    cursor: pointer;
+    background-color: #e6e6e6;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-family: inherit;
+    color: var(--text-color);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.modal-btn:hover {
+    background-color: #d4d4d4;
+}
+
+.modal-btn:active {
+    transform: scale(0.98);
+}
+
+.deploy-btn {
+    background-color: #e6e6e6;
+    color: #000000;
+    border: var(--border-width) solid var(--border-color);
+    margin-top: 8px;
+}
+
+.deploy-btn:hover {
+    background-color: #d4d4d4;
+}
+
+.secondary-btn {
+    background-color: var(--panel-bg);
+    font-weight: 500;
+}
+
+.custom-patch-section {
+    display: none;
+    border-top: var(--border-width) solid var(--border-color);
+    margin-top: 8px;
+    padding-top: 16px;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.custom-patch-section.visible {
+    display: flex;
+}
+
+.checkbox-list {
+    font-size: 0.85rem;
+    max-height: 140px;
+    overflow-y: auto;
+    border: var(--border-width) solid var(--border-color);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    accent-color: var(--text-color);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* --- 9. System & Patch Notices --- */
+.patch-notice {
+    align-self: center;
+    background: var(--slight-dark);
+    color: var(--text-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin: 10px 0;
+    border: var(--border-width) solid var(--border-color);
+    text-transform: uppercase;
+}
+
+.patch-id-label {
+    font-weight: 700;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+}
+
+/* --- Ghost Buttons for Feedback UI --- */
+.ghost-action-btn {
+    background-color: transparent !important;
+    border: 1px solid #ea4335 !important;
+    color: #ea4335 !important;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ghost-action-btn:hover {
+    background-color: #fce8e6 !important;
+}
+
+/* User Bubble Copy Button */
+.message.user {
+    position: relative;
+    padding-right: 40px;
+    /* Room for the copy icon */
+}
+
+.user-copy-btn {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s, opacity 0.2s;
+    opacity: 0;
+}
+
+.message.user:hover .user-copy-btn {
+    opacity: 1;
+}
+
+.user-copy-btn:hover {
+    background: rgba(0, 0, 0, 0.08);
+    color: #000000;
+}
+
+.user-copy-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: #000000;
+}
+
+/* --- 10. Splash Screen --- */
+body.splash-body {
+    cursor: pointer;
+}
+
+.splash-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.splash-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.splash-logo {
+    height: 150px;
+    display: block;
+}
+
+.splash-prompt {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-color);
+    animation: blink-prompt 2s ease-in-out infinite;
+}
+
+@keyframes blink-prompt {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.65;
+    }
+}
+
+
+.briefing-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.briefing-container {
+    width: 100%;
+    max-width: 1100px;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 40px;
+    background-color: var(--panel-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.briefing-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    border-bottom: var(--border-width) solid var(--border-color);
+    padding-bottom: 16px;
+}
+
+.briefing-content p {
+    font-size: 1.1rem;
+    line-height: 1.25;
+    margin-bottom: 20px;
+}
+
+.briefing-content p:last-child {
+    margin-bottom: 0;
+}
+
+.briefing-content strong {
+    font-weight: 700;
+}
