@@ -294,7 +294,7 @@ FALSE_POSITIVES_CACHE = {
 BLACKLIST = set()
 
 def _init_feedback_db():
-    db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "feedback.db"))
+    db_path = os.path.join(os.path.dirname(__file__), "feedback.db")
     try:
         conn = sqlite3.connect(db_path)
         cur = conn.cursor()
@@ -357,7 +357,7 @@ def submit_feedback():
     if not word or label not in [0, 1]:
         return jsonify({"error": "Invalid payload"}), 400
 
-    db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "feedback.db"))
+    db_path = os.path.join(os.path.dirname(__file__), "feedback.db")
     try:
         conn = sqlite3.connect(db_path)
         cur = conn.cursor()
@@ -393,10 +393,9 @@ def _bias_db_path() -> str:
     """
     Resolve the bias database CSV path.
 
-    `backend/app.py` lives one directory below the project root where we store
-    `bias_database.csv`, so we walk up one level.
+    We now store `bias_database.csv` in the same directory.
     """
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "bias_database.csv"))
+    return os.path.join(os.path.dirname(__file__), "bias_database.csv")
 
 
 def _bias_dictionary_path() -> str:
@@ -406,7 +405,7 @@ def _bias_dictionary_path() -> str:
     In dictionary-only mode we prefer a `bias_dictionary.csv` in the project root.
     If it doesn't exist, fall back to the legacy `bias_database.csv`.
     """
-    root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    root = os.path.dirname(__file__)
     preferred = os.path.join(root, "bias_dictionary.csv")
     fallback = os.path.join(root, "bias_database.csv")
     return preferred if os.path.exists(preferred) else fallback

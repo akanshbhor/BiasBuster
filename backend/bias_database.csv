@@ -1,0 +1,577 @@
+Trigger_Word,Dimension,Affected_Group,Severity,Explanation
+bossy,Gendered leadership tropes,Women,High,"Often used to penalize assertive women. Try ""decisive"" or ""leadership-oriented""."
+abrasive,Tone policing,Women/BIPOC,Medium,Disproportionately used against women and minorities in performance reviews.
+aggressive,Tone policing,Black professionals / Women,Medium,Can carry racial or gendered undertones when describing communication styles.
+shrill,Tone policing,Women,High,A highly gendered term used to dismiss women's voices or opinions.
+hysterical,Tone policing,Women,High,Historically rooted in sexist medical diagnoses to invalidate women's emotions.
+emotional,Tone policing,Women,High,Often used to undermine the logical arguments of female professionals.
+feisty,Tone policing,Women,Low,Diminutive term rarely used for adult men; undermines professional authority.
+bubbly,Tone policing,Women,Low,Can reduce a professional's identity to a stereotypical feminine trait.
+culture fit,Cultural coding,Racial/ethnic minorities,High,"Often used as a gatekeeping term to hire people similar to the existing team. Try ""values fit""."
+native English speaker,Cultural coding,Non-native speakers,High,Discriminatory against fluent speakers from non-English speaking backgrounds.
+articulate,Cultural coding,BIPOC,High,When directed at BIPOC professionals, it implies surprise that they speak well.
+urban,Cultural coding,Black/African American,Medium,Often used as a coded demographic dog-whistle.
+ghetto,Classism & racism,Lower-income / BIPOC,High,Highly inappropriate and rooted in racial and socioeconomic segregation.
+thug,Racial coding,Black professionals,High,Heavily racially coded term often used to criminalize Black men.
+tribe,Cultural appropriation,Indigenous peoples,Medium,"Appropriates Indigenous culture. Try ""team"""," ""community"""," or ""network""."
+spirit animal,Cultural appropriation,Indigenous peoples,Medium,"Appropriates Indigenous spiritual traditions. Try ""kindred spirit"" or ""patronus""."
+powwow,Cultural appropriation,Indigenous peoples,Medium,"Disrespectful to sacred Indigenous gatherings. Try ""huddle"" or ""quick meeting""."
+peanut gallery,Racist origins,Black professionals,Medium,"Historically referred to the segregated sections of theaters. Try ""audience""."
+master,Racial coding,BIPOC,Medium,"Rooted in slavery (especially in tech e.g. master/slave architecture). Try ""primary""."
+slave,Racial coding,BIPOC,High,Rooted in slavery. In tech," use ""replica"" or ""secondary"" instead."
+blacklist,Racial coding,Black professionals,Low,"Associates ""black"" with bad/forbidden. Try ""blocklist"" or ""deny list""."
+whitelist,Racial coding,Black professionals,Low,"Associates ""white"" with good/permitted. Try ""allowlist"" or ""safe list""."
+grandfathered,Racist origins,BIPOC,Medium,"Originates from laws designed to prevent Black Americans from voting. Try ""legacy status""."
+digital native,Ageism,Older workers,High,Implies older workers cannot understand modern technology.
+young,Ageism,Older workers,High,Can violate age discrimination laws if used in job descriptions.
+energetic,Ageism,Older workers,Medium,Often used as a coded way to request younger applicants.
+energy,Ageism,Older workers,Low,Sometimes used to filter out older, more deliberate workers.
+overqualified,Ageism,Older workers,Medium,A common excuse used to avoid hiring older, more experienced candidates.
+recent grad,Ageism,Older workers,High,Excludes older candidates who may be equally qualified.
+recent grads,Ageism,Older workers,High,Excludes older candidates who may be equally qualified.
+entry-level,Ageism,Older workers,Low,Usually fine," but can be ageist if used alongside words like ""young""."
+fresh blood,Ageism,Older workers,High,Highly informal and implies existing (often older) staff are stale.
+tech-savvy,Ageism,Older workers,Low,Sometimes used as a coded filter for younger demographics.
+mature,Ageism,Older workers,Low,Can be patronizing when used to describe older employees.
+dinosaur,Ageism,Older workers,Medium,Used to insult older employees or imply they are obsolete.
+boomer,Ageism,Older workers,Medium,Generational slang used derogatorily to dismiss older colleagues.
+rockstar,Corporate bro-culture,Women / Non-traditional,Medium,Implies a toxic," ego-driven work culture with zero work-life balance. Try ""expert""."
+rockstars,Corporate bro-culture,Women / Non-traditional,Medium,Implies a toxic," ego-driven work culture. Try ""high-performers""."
+ninja,Corporate bro-culture,Women / Non-traditional,Medium,Tech jargon that obscures actual job duties and implies bro-culture.
+ninjas,Corporate bro-culture,Women / Non-traditional,Medium,Tech jargon that obscures actual job duties.
+hustler,Corporate bro-culture,Neurodivergent,Low,Glorifies burnout and overworking.
+hustlers,Corporate bro-culture,Neurodivergent,Low,Glorifies burnout and overworking.
+guru,Corporate bro-culture,Women / Non-traditional,Low,"Appropriates a spiritual term for corporate hype. Try ""expert""."
+wizard,Corporate bro-culture,Women / Non-traditional,Low,Jargon that alienates non-traditional tech backgrounds.
+jedi,Corporate bro-culture,Women / Non-traditional,Low,Exclusionary pop-culture jargon in job descriptions.
+crush it,Corporate bro-culture,Neurodivergent,Low,Hyper-aggressive language that can alienate certain work styles.
+killer,Corporate bro-culture,Trauma-affected,Low,"Violent language used casually in business. Try ""exceptional""."
+dominate,Corporate bro-culture,Women / Non-traditional,Low,"Hyper-masculine business language. Try ""lead"" or ""succeed""."
+alpha,Corporate bro-culture,Women / Non-traditional,Medium,Toxic masculine framing of leadership.
+war room,Bro-culture & militaristic,Trauma-affected,Low,"Militaristic language. Try ""situation room"" or ""command center""."
+sanity check,Ableism,Mental health disabilities,Medium,"Trivializes mental illness. Try ""quick check"" or ""confidence check""."
+crazy,Ableism,Mental health disabilities,Low,"Stigmatizes mental health. Try ""wild"" or ""unbelievable""."
+blind spot,Ableism,Visually impaired,Low,"Uses disability as a metaphor for ignorance. Try ""oversight""."
+wheelchair bound,Ableism,People with disabilities,High,"Reduces a person to their mobility device. Try ""wheelchair user""."
+OCD,Ableism,Neurodivergent,High,"Trivializes a serious clinical disorder. Try ""detail-oriented"" or ""meticulous""."
+bipolar,Ableism,Mental health disabilities,High,"Trivializes a clinical diagnosis. Try ""fluctuating"" or ""unpredictable""."
+lame,Ableism,People with physical disabilities,High,"Historically used against people with mobility issues. Try ""uncool"" or ""bad""."
+dumb,Ableism,People with speech/cognitive disabilities,Low,"Historically used against people unable to speak. Try ""foolish""."
+tone-deaf,Ableism,People with hearing disabilities,Low,"Uses disability as a metaphor for insensitivity. Try ""insensitive""."
+spaz,Ableism,People with physical disabilities,High,"A highly offensive slur in many regions derived from ""spastic""."
+crippled,Ableism,People with physical disabilities,High,"An outdated and offensive term. Try ""broken"" or ""impaired"" (for systems)."
+guys,Gendered language,Non-men,Low,"Assumes male as the default. Try ""team"""," ""folks"""," or ""everyone""."
+mankind,Gendered language,Non-men,Medium,"Excludes women and non-binary people. Try ""humanity"" or ""people""."
+manpower,Gendered language,Non-men,Medium,"Gendered term for labor. Try ""workforce"" or ""staffing""."
+chairman,Gendered language,Non-men,Low,"Gendered title. Try ""chairperson"" or ""chair""."
+salesman,Gendered language,Non-men,Low,"Gendered title. Try ""salesperson"" or ""sales rep""."
+ladies and gentlemen,Gendered language,Non-binary,Low,"Enforces a gender binary. Try ""welcome everyone""."
+Ivy League,Classism & elitism,Lower-income candidates,Medium,Creates arbitrary elitist barriers in hiring.
+pedigree,Classism & elitism,Lower-income candidates,Medium,"Treats humans like show dogs; heavily classist. Try ""background""."
+blue-collar,Classism & elitism,Working-class candidates,Low,Outdated class-based grouping.
+low-skill,Classism & elitism,Working-class candidates,High,"Devalues essential labor. Try ""entry-level"" or ""minimum wage""."
+uneducated,Classism & elitism,Working-class candidates,High,Often used to demean people without formal degrees who have practical experience.
+maternity leave,Heteronormativity & caregiver bias,Fathers / LGBTQ+,Medium,"Excludes fathers and adoptive parents. Try ""parental leave""."
+traditional family,Heteronormativity,LGBTQ+ / Single parents,High,Implies non-nuclear or LGBTQ+ families are abnormal.
+opposite sex,Heteronormativity,Non-binary / LGBTQ+,Medium,Reinforces a strict gender binary.
+brownbag,Racist origins,Black professionals,Medium,"Refers to the discriminatory ""brown paper bag"" skin-color test. Try ""lunch-and-learn""."
+10x engineer,Tech Bro Culture,Collaborative workers / Juniors,High,"Creates a toxic myth that one person is worth ten; devalues teamwork. Try ""high performer""."
+code monkey,Tech Bro Culture,Junior Developers,Medium,"Dehumanizes developers as mindless typists. Try ""software engineer""."
+digital native,Ageism,Older workers,High,"Implies older adults cannot understand technology. Try ""tech-fluent""."
+fresh blood,Ageism,Older workers,Medium,"Creepy corporate jargon that implies older workers are ""stale"". Try ""new perspectives""."
+young blood,Ageism,Older workers,Medium,"Directly excludes experienced candidates. Try ""new talent""."
+over the hill,Ageism,Older workers,High,"Deeply disrespectful trope about aging. Try ""experienced""."
+seasoned,Ageism,Older workers,Low,While often meant as a compliment," it can unconsciously trigger age bias. Try ""experienced""."
+sunset,Ageism / Corporate Jargon,Older workers,Low,When applied to people (e.g.," ""sunsetting older staff"")"," it is highly inappropriate. Try ""retiring"" or ""phasing out""."
+spirit animal,Cultural appropriation,Indigenous peoples,High,"Appropriates sacred Indigenous traditions for trivial preferences. Try ""kindred spirit"" or ""favorite""."
+powwow,Cultural appropriation,Indigenous peoples,High,"Appropriates a sacred gathering for a quick corporate meeting. Try ""huddle"" or ""quick sync""."
+tribe,Cultural appropriation,Indigenous peoples,Medium,"When used in corporate settings (""marketing tribe"")"," it appropriates Indigenous culture. Try ""team"" or ""community""."
+guru,Cultural appropriation,South Asian / Hindu,Low,"Appropriates a respected spiritual title for corporate roles. Try ""specialist""."
+ninja,Corporate Culture,Older workers / Caregivers,Medium,"Used in tech to demand overwork and exclude those who do not fit a young/aggressive stereotype. Try ""expert""."
+rockstar,Corporate Culture,Introverts / Older workers,Medium,"Promotes an exclusionary culture that values ego over collaboration. Try ""top performer""."
+open the kimono,Racist origins / Sexism,Asian / Women,High,"Deeply inappropriate 80s corporate jargon with racist and sexist undertones. Try ""full transparency""."
+peanut gallery,Racist origins,Black professionals,Medium,Historically referred to the segregated," cheapest seats in a theater. Try ""audience"" or ""unsolicited opinions""."
+sold down the river,Racist origins,Black professionals,High,"Directly refers to the domestic slave trade. Try ""betrayed"" or ""thrown under the bus""."
+grandfathered in,Racist origins,BIPOC,Medium,"Originates from post-Civil War voting laws designed to disenfranchise Black voters. Try ""exempted"" or ""legacy status""."
+tipping point,Racist origins,BIPOC,Low,"Originally popularized to describe white flight from neighborhoods when minorities moved in. Try ""turning point""."
+uppity,Racist origins,Black professionals,High,"Historically used to describe Black people who did not ""know their place"". Try ""arrogant"" (if applicable) or avoid entirely."
+master,Tech Jargon,Black professionals,Medium,"Historical reference to slavery when used with 'slave' architecture. Try ""primary""."
+slave,Tech Jargon,Black professionals,High,"Historical reference to slavery. Try ""replica"" or ""secondary""."
+blacklist,Tech Jargon,BIPOC,Medium,"Equates ""black"" with ""bad"" or ""blocked"". Try ""blocklist"" or ""denylist""."
+whitelist,Tech Jargon,BIPOC,Medium,"Equates ""white"" with ""good"" or ""allowed"". Try ""allowlist"" or ""safelist""."
+man hours,Gender bias,Women / Non-binary,Low,"Exclusionary default to male phrasing. Try ""person-hours"" or ""engineering hours""."
+man the desk,Gender bias,Women / Non-binary,Low,"Gendered phrase for covering a shift. Try ""staff the desk"" or ""cover the desk""."
+man up,Gender bias,Men / Non-binary,High,"Toxic masculinity trope that equates emotional suppression with strength. Try ""be brave"" or ""take responsibility""."
+guys,Gender bias,Women / Non-binary,Low,While often used neutrally," it defaults to male. Try ""team"""," ""folks"""," or ""everyone""."
+female doctor,Gender bias,Women,Medium,"Implies doctors are inherently male and females are an exception. Try ""doctor""."
+male nurse,Gender bias,Men,Medium,"Implies nurses are inherently female and males are an exception. Try ""nurse""."
+working mom,Gender bias,Women,Medium,"Reinforces that mothers working is an exception (""working dad"" is rarely used). Try ""parent"" or ""employee""."
+family man,Gender bias,Men,Low,"Often used to boost male candidates while women with children are penalized. Try ""devoted parent""."
+sweetie,Sexism,Women,High,Infantilizing and deeply inappropriate in a professional setting.
+honey,Sexism,Women,High,Infantilizing and deeply inappropriate in a professional setting.
+girls,Sexism,Women,Medium,When used to describe adult women in the workplace," it is infantilizing. Try ""women"" or ""team""."
+blind spot,Ableism,Visually impaired,Low,"Uses disability as a negative metaphor for ignorance. Try ""oversight"" or ""unseen area""."
+tone deaf,Ableism,Hearing impaired,Medium,"Uses disability to describe insensitivity. Try ""out of touch"" or ""insensitive""."
+turn a blind eye,Ableism,Visually impaired,Medium,"Equates blindness with willful ignorance. Try ""ignore"" or ""overlook""."
+fall on deaf ears,Ableism,Hearing impaired,Medium,"Equates deafness with ignoring someone. Try ""be ignored""."
+sanity check,Ableism,Mental Health,Medium,"Trivializes mental health struggles in a corporate setting. Try ""quick review"" or ""logic check""."
+crazy,Ableism,Mental Health,Low,"Casual ableism that subtly stigmatizes mental illness. Try ""wild"" or ""unbelievable""."
+insane,Ableism,Mental Health,Low,"Stigmatizing language used casually. Try ""unreasonable"" or ""intense""."
+psycho,Ableism,Mental Health,High,"Deeply offensive slur regarding mental health. Try ""irrational"" or ""erratic""."
+schizo,Ableism,Mental Health,High,"Deeply offensive slur regarding schizophrenia. Try ""unpredictable"" or ""chaotic""."
+OCD,Ableism,Mental Health,High,"Trivializes a serious mental health condition when used to mean 'organized'. Try ""meticulous"" or ""detail-oriented""."
+bipolar,Ableism,Mental Health,High,"Using a clinical diagnosis to describe unpredictable behavior is stigmatizing. Try ""fluctuating"" or ""inconsistent""."
+on the spectrum,Neurodiversity,Autistic individuals,High,"Often used casually to mock someone's social skills. Try ""socially awkward"" (if accurate) or avoid entirely."
+normal,Neurodiversity,Neurodivergent individuals,Medium,When used to contrast against neurodivergent people," it implies they are ""abnormal"". Try ""neurotypical""."
+rain man,Neurodiversity,Autistic individuals,High,Offensive stereotype reducing neurodivergent people to savant tropes.
+spaz,Ableism,Physical disabilities,High,"Derives from ""spastic"""," a highly offensive term for cerebral palsy. Try ""clumsy"" or ""hyper""."
+lame,Ableism,Physical disabilities,High,"Uses a physical disability as a synonym for ""boring"" or ""bad"". Try ""uncool"" or ""boring""."
+crippled,Ableism,Physical disabilities,High,"Deeply offensive slur. Try ""paralyzed"" or ""damaged"" (if referring to an object)."
+dumb,Ableism,Speech/Hearing impaired,Low,"Historically meant inability to speak; now used to mean stupid. Try ""foolish"" or ""ill-advised""."
+retarded,Ableism,Intellectual disabilities,High,"A severe slur. Try ""foolish"" or ""ridiculous""."
+wheelchair-bound,Ableism,Physical disabilities,Medium,"Implies wheelchairs are traps rather than tools of mobility. Try ""wheelchair user""."
+special needs,Ableism,Disabled individuals,Medium,"Often considered patronizing by the disabled community. Try ""disabled"" or specify the accommodation."
+white trash,Classism,Lower-income candidates,High,Deeply classist and derogatory slur.
+trailer park,Classism,Lower-income candidates,Medium,Used to demean people based on housing status.
+inner city,Classism / Racism,BIPOC / Lower-income,Medium,Often used as a coded dog-whistle for poor minority neighborhoods.
+rough neighborhood,Classism,Lower-income candidates,Low,Can be used to unfairly judge a candidate's background.
+uneducated,Classism & elitism,Working-class candidates,High,Often used to demean people without formal degrees who have practical experience.
+blue-collar,Classism & elitism,Working-class candidates,Low,"Outdated class-based grouping. Try ""skills-based"" or ""manual labor""."
+low-skill,Classism & elitism,Working-class candidates,High,"Devalues essential labor. Try ""entry-level"" or ""minimum wage""."
+pedigree,Classism & elitism,Lower-income candidates,Medium,"Treats humans like show dogs; heavily classist. Try ""background""."
+Ivy League,Classism & elitism,Lower-income candidates,Medium,Creates arbitrary elitist barriers in hiring.
+opposite sex,Heteronormativity,Non-binary / LGBTQ+,Medium,Reinforces a strict gender binary.
+traditional family,Heteronormativity,LGBTQ+ / Single parents,High,Implies non-nuclear or LGBTQ+ families are abnormal.
+maternity leave,Heteronormativity & caregiver bias,Fathers / LGBTQ+,Medium,"Excludes fathers and adoptive parents. Try ""parental leave""."
+preferred pronouns,Transphobia / Gender Bias,Trans/Non-binary,Medium,"Implies a person's gender is just a ""preference"". Try ""pronouns""."
+biological male,Transphobia,Trans women,High,"Often used to invalidate a trans woman's identity. Try ""cisgender man"" or ""assigned male at birth""."
+biological female,Transphobia,Trans men,High,"Often used to invalidate a trans man's identity. Try ""cisgender woman"" or ""assigned female at birth""."
+Trigger_Word,Dimension,Affected_Group,Severity,Explanation
+move fast and break things,Tech Bro Culture,Risk averse teams and regulated industries,Medium,"Glorifies reckless execution over safety and compliance. Try ""move quickly with safeguards""."
+work hard play hard,Tech Bro Culture,Caregivers and disabled workers,Medium,"Signals expectation of long hours and social pressure. Try ""sustainable high performance""."
+always on culture,Tech Bro Culture,Caregivers and disabled workers,High,"Normalizes 24/7 availability and burnout. Try ""clear on call expectations""."
+hustle culture,Tech Bro Culture,Neurodivergent and caregivers,Medium,"Frames overwork as virtue and shames boundaries. Try ""healthy pace""."
+rise and grind,Tech Bro Culture,Caregivers and disabled workers,Low,"Signals grindset norms and ignores different schedules. Try ""focus time""."
+no excuses,Tech Bro Culture,Disabled workers and caregivers,Medium,"Erases legitimate constraints and accommodation needs. Try ""problem solving mindset""."
+whatever it takes,Tech Bro Culture,Disabled workers and caregivers,High,"Implies boundaryless labor and punishes accommodations. Try ""deliver within constraints""."
+sleep when you are dead,Tech Bro Culture,All employees,High,"Glorifies sleep deprivation and unsafe work norms. Try ""rested teams ship better""."
+burn the midnight oil,Tech Bro Culture,Caregivers and disabled workers,Medium,"Normalizes late night work as dedication. Try ""plan time realistically""."
+crush the sprint,Tech Bro Culture,Neurodivergent,Low,"Aggressive framing that can exclude different work styles. Try ""complete the sprint goals""."
+kill it in production,Violent corporate language,Trauma affected,Low,"Violent metaphor for performance. Try ""perform well in production""."
+warrior mindset,Bro culture and militaristic,Trauma affected,Low,"Militaristic framing in workplace culture. Try ""resilient mindset""."
+battle tested,Bro culture and militaristic,Trauma affected,Low,"Militaristic framing that can alienate some teams. Try ""proven in practice""."
+front lines,Bro culture and militaristic,Trauma affected,Low,"Militarizes work and can trivialize real trauma. Try ""customer facing teams""."
+boots on the ground,Bro culture and militaristic,Trauma affected,Low,"Militaristic metaphor for operations work. Try ""on site support""."
+take no prisoners,Bro culture and militaristic,Trauma affected,Medium,"Violent metaphor that signals toxic competitiveness. Try ""be decisive""."
+shock and awe,Bro culture and militaristic,Trauma affected,Medium,"References real warfare and intimidation. Try ""make a strong launch""."
+dominate the market,Bro culture and militaristic,Non traditional candidates,Low,"Aggressive framing that can signal macho culture. Try ""compete effectively""."
+hunter mentality,Sales culture bias,Introverts and disabled workers,Medium,"Overvalues aggressive selling style over consultative approaches. Try ""relationship building""."
+aggressive closer,Sales culture bias,Women and non binary,Medium,"Rewards stereotypically masculine behavior. Try ""effective closer""."
+rockstar attitude,Corporate bro culture,Introverts and collaborative workers,Medium,"Signals ego driven culture and unrealistic expectations. Try ""reliable contributor""."
+ninja mentality,Corporate bro culture,Non traditional candidates,Low,"Exclusionary jargon that obscures job duties. Try ""specialist""."
+10x developer,Tech Bro Culture,Collaborative workers and juniors,High,"Inflates lone hero myths and devalues teamwork. Try ""high performing engineer""."
+unicorn candidate,Hiring bias,Underrepresented candidates,High,"Signals unrealistic checklist and narrow profile. Try ""must have skills""."
+purple squirrel,Hiring bias,Underrepresented candidates,High,"Signals impossible requirements and narrow filters. Try ""core requirements""."
+culture fit check,Cultural coding,Underrepresented candidates,High,"Often used to exclude people who differ from incumbents. Try ""values aligned""."
+not a culture fit,Cultural coding,Underrepresented candidates,High,"Vague rejection that can mask bias. Try ""role requirements mismatch""."
+culture add,Cultural coding,Underrepresented candidates,Medium,"Can become performative without clear criteria. Try ""brings diverse perspective""."
+executive presence,Tone policing,Women and BIPOC,High,"Often a vague standard aligned to dominant norms. Try ""clear communication and influence""."
+polished candidate,Classism and elitism,Working class candidates,Medium,"Can penalize accents attire or background. Try ""professional communication""."
+well spoken,Classism and cultural coding,BIPOC and non native speakers,Medium,"Often implies surprise and bias about speech patterns. Try ""clear communicator""."
+strong accent,Cultural coding,Non native speakers,High,"Often used to exclude even when communication is effective. Try ""communication clarity""."
+native speaker preferred,Cultural coding,Non native speakers,High,"Discriminatory and often unnecessary. Try ""fluent in English""."
+American born,Cultural coding,Immigrants and non citizens,High,"Discriminatory and often illegal. Try ""work authorization required""."
+must be local,Cultural coding,Immigrants and caregivers,Medium,"Can exclude remote capable candidates and relocators. Try ""time zone overlap""."
+must relocate quickly,Caregiver bias,Caregivers,Medium,"Disadvantages those with family constraints. Try ""relocation timeline discussion""."
+always available,Caregiver bias,Caregivers and disabled workers,High,"Signals refusal of boundaries and accommodations. Try ""defined coverage hours""."
+willing to travel constantly,Caregiver bias,Caregivers and disabled workers,Medium,"Excludes caregivers without flexibility. Try ""travel expectations with range""."
+must have reliable transportation,Classism and disability bias,Lower income and disabled workers,Medium,"Can exclude those using public transit. Try ""can meet job location needs""."
+high energy environment,Ageism and ableism,Older workers and disabled workers,Medium,"Coded ask for youthful stamina and extroversion. Try ""fast paced environment""."
+fast paced environment,Ageism and ableism,Disabled workers,Low,"Can mask understaffing and unrealistic workloads. Try ""clear priorities""."
+thick skin required,Tone policing and harassment risk,Women and BIPOC,High,"Signals tolerance of disrespectful culture. Try ""respectful feedback culture""."
+no hand holding,Ability bias,Juniors and disabled workers,Medium,"Signals lack of support and excludes those needing onboarding. Try ""self directed with support""."
+self starter only,Ability bias,Disabled workers and juniors,Medium,"Can exclude those who thrive with structured onboarding. Try ""independent once onboarded""."
+hit the ground running,Hiring bias,Career changers and disabled workers,Medium,"Signals no training and penalizes non linear backgrounds. Try ""ramp up quickly with support""."
+low maintenance employee,Disability bias,Disabled workers,High,"Signals resistance to accommodations and support. Try ""clear responsibilities""."
+needs no supervision,Hiring bias,Neurodivergent and juniors,Low,"Unrealistic expectation and discourages mentorship. Try ""comfortable with autonomy""."
+work long hours,Work life balance bias,Caregivers,High,"Directly signals overwork expectations. Try ""occasional overtime""."
+weekends are expected,Work life balance bias,Caregivers,High,"Excludes those with caregiving or religious commitments. Try ""rotating coverage with notice""."
+late nights are normal,Work life balance bias,Caregivers,Medium,"Normalizes burnout and excludes caregivers. Try ""planned release windows""."
+must socialize after work,Inclusion and religious bias,Religious minorities and caregivers,Medium,"Pressures participation in alcohol centric culture. Try ""optional team events""."
+beer pong culture,Inclusion and substance bias,Recovering addicts and religious minorities,Medium,"Centers alcohol as bonding. Try ""inclusive social options""."
+Friday beers,Inclusion and substance bias,Recovering addicts and religious minorities,Low,"Alcohol centric culture signal. Try ""Friday social hour""."
+boys club,Gender bias,Women and non binary,High,"Signals exclusionary environment. Try ""inclusive team culture""."
+she is too emotional,Tone policing,Women,High,"Gendered dismissal of valid concerns. Try ""responded strongly""."
+too sensitive,Tone policing,Women and BIPOC,Medium,"Used to dismiss feedback about harm. Try ""concerns raised""."
+calm down sweetheart,Sexism,Women,High,"Infantilizing and dismissive. Try ""let us pause and discuss""."
+office wife,Sexism,Women,High,"Reduces professional women to domestic roles. Try ""executive assistant"" if accurate."
+mommy track,Maternal bias,Women,High,"Assumes mothers are less committed. Try ""career path preferences""."
+working mother,Maternal bias,Women,Medium,"Frames motherhood as a work anomaly. Try ""parent""."
+family comes first hire risk,Maternal bias,Caregivers,High,"Penalizes caregivers and violates fairness norms. Try ""schedule needs""."
+she might get pregnant,Maternal bias,Women,High,"Discriminatory assumption about family planning. Try ""role requirements""."
+not leadership material,Tone policing,Women and BIPOC,Medium,"Vague dismissal often influenced by bias. Try ""specific growth areas""."
+too assertive for a woman,Sexism,Women,High,"Direct gendered double standard. Try ""assertive communicator""."
+abrasive for her level,Sexism and tone policing,Women,Medium,"Gendered critique that lacks specifics. Try ""specific behaviors""."
+bossy for a woman,Sexism,Women,Medium,"Penalizes female leadership behavior. Try ""direct""."
+queen bee,Sexism,Women,Medium,"Stereotypes women as hostile to other women. Try ""conflict patterns"" with specifics."
+drama queen,Sexism,Women,High,"Gendered dismissal of concerns as drama. Try ""raised repeated issues""."
+emotional labor,Gender bias,Women and non binary,Low,"Can be used to offload support work onto women. Try ""team support responsibilities""."
+supportive but not strategic,Gender bias,Women,Medium,"Often a biased dichotomy in reviews. Try ""scope and impact""."
+needs to smile more,Sexism,Women,High,"Polices appearance and demeanor. Try ""approachable communication""."
+too intense for culture,Tone policing,BIPOC and women,Medium,"Vague rejection that can mask bias. Try ""specific collaboration issues""."
+not a good fit with the team,Cultural coding,Underrepresented candidates,High,"Vague phrase often used to exclude outsiders. Try ""skills mismatch""."
+we want someone like us,Cultural coding,Underrepresented candidates,High,"Explicit in group bias. Try ""role aligned behaviors""."
+good old boys network,Gender bias,Women and non binary,High,"Signals exclusionary advancement norms. Try ""fair promotion criteria""."
+bro grammer culture,Tech Bro Culture,Women and non traditional candidates,Medium,"Signals exclusionary stereotype. Try ""inclusive engineering culture""."
+code warrior,Tech Bro Culture,Collaborative workers,Low,"Hero framing over teamwork. Try ""strong engineer""."
+hero developer,Tech Bro Culture,Collaborative workers,Medium,"Encourages single point of failure and overwork. Try ""team based delivery""."
+lone wolf,Hiring bias,Collaborative workers,Medium,"Signals preference for antisocial work styles. Try ""independent and collaborative""."
+works best alone,Hiring bias,Collaborative workers,Low,"May discourage collaboration culture. Try ""can focus independently""."
+must be passionate,Class bias and burnout risk,Disabled workers and caregivers,Low,"Can become a proxy for free overtime. Try ""motivated by mission""."
+missionary not mercenary,Cultural coding and classism,Working class candidates,Medium,"Shames those needing stable pay. Try ""aligned with mission""."
+pay in equity only,Classism,Lower income candidates,High,"Excludes those who cannot take financial risk. Try ""competitive compensation""."
+we are a family,Boundary and harassment risk,All employees,Medium,"Used to blur boundaries and tolerate overreach. Try ""supportive team""."
+family atmosphere,Boundary and harassment risk,All employees,Low,"Can blur professional boundaries. Try ""collaborative environment""."
+we need fresh perspectives,Ageism,Older workers,Medium,"Often used to justify replacing experienced staff. Try ""diverse perspectives""."
+new generation of leaders,Ageism,Older workers,Medium,"Implies older leaders are obsolete. Try ""next cohort of leaders""."
+early career only,Ageism,Older workers,High,"Excludes older applicants directly. Try ""junior level role""."
+recent graduate preferred,Ageism,Older workers,High,"Excludes older candidates. Try ""entry level""."
+junior minded,Ageism,Older workers,Medium,"Coded preference for youth and compliance. Try ""growth oriented""."
+energetic self starter,Ageism and disability bias,Older workers and disabled workers,Medium,"Coded ask for youthful stamina. Try ""proactive""."
+high stamina role,Disability bias,Disabled workers,Medium,"May exclude candidates without job related need. Try ""physical requirements"" if real."
+digital native mindset,Ageism,Older workers,High,"Assumes older workers lack tech fluency. Try ""tech fluent""."
+native to social media,Ageism,Older workers,Medium,"Signals youth preference. Try ""experienced with social media""."
+born with a smartphone,Ageism,Older workers,Medium,"Ageist stereotype about tech adoption. Try ""comfortable with mobile tools""."
+up and coming leader,Ageism,Older workers,Low,"Can bias toward younger staff for leadership roles. Try ""emerging leader""."
+high potential youth,Ageism,Older workers,High,"Directly age coded. Try ""high potential employee""."
+grey hair discount,Ageism,Older workers,High,"Discriminatory assumption about older workers value. Try ""experience valued""."
+retirement risk,Ageism,Older workers,High,"Speculates about retirement to deny opportunities. Try ""succession planning""."
+near retirement,Ageism,Older workers,High,"Directly age coded and discriminatory. Try ""tenure planning"" if needed."
+set in their ways,Ageism,Older workers,Medium,"Stereotype that older workers resist change. Try ""change readiness"" with specifics."
+old school mindset,Ageism,Older workers,Medium,"Stereotype that someone is outdated. Try ""prefers established processes""."
+can you keep up,Ageism and ableism,Older workers and disabled workers,Medium,"Shames different pace or needs. Try ""clear expectations""."
+needs more energy,Ageism,Older workers,Medium,"Coded bias about age and stamina. Try ""engagement and responsiveness"" with specifics."
+not a long term fit,Ageism,Older workers,Medium,"Often used to exclude older hires. Try ""role alignment""."
+too experienced for this level,Ageism,Older workers,Medium,"Coded rejection of senior candidates. Try ""scope mismatch""."
+needs to modernize,Ageism,Older workers,Low,"Can imply age coded stereotypes. Try ""learn new tooling""."
+legacy thinking,Ageism,Older workers,Medium,"Frames experience as outdated. Try ""prior approach""."
+dinosaur mentality,Ageism,Older workers,High,"Insult implying obsolescence. Try ""needs training"" if factual."
+needs to be more modern,Ageism,Older workers,Low,"Often vague and biased. Try ""specific skill gaps""."
+able bodied candidate,Disability bias,Disabled workers,High,"Excludes disabled people explicitly. Try ""role essential functions""."
+must walk the floor,Disability bias,Disabled workers,Medium,"May exclude mobility device users if not essential. Try ""can perform site visits""."
+stand for long periods,Disability bias,Disabled workers,Medium,"May be discriminatory unless truly essential. Try ""physical requirements"" with clarity."
+lift 50 pounds required,Disability bias,Disabled workers,Medium,"Common barrier when not essential. Try ""assistive tools available""."
+no accommodations,Disability discrimination,Disabled workers,High,"Illegal and exclusionary. Try ""reasonable accommodations available""."
+special needs person,Ableism,Disabled individuals,Medium,"Often considered patronizing. Try ""disabled person"" or ""person with a disability""."
+confined to a wheelchair,Ableism,Wheelchair users,High,"Frames mobility device as imprisonment. Try ""wheelchair user""."
+suffers from autism,Neurodiversity,Autistic individuals,Medium,"Frames autism as suffering by default. Try ""autistic person""."
+high functioning autism,Neurodiversity,Autistic individuals,Medium,"Problematic label that minimizes support needs. Try ""autistic"" with supports."
+low functioning autism,Neurodiversity,Autistic individuals,High,"Dehumanizing label tied to capacity assumptions. Try ""support needs"" language."
+autistic screeching,Neurodiversity,Autistic individuals,High,"Mocking and dehumanizing. Try ""sensory distress"" if describing behavior."
+OCD about details,Ableism,Mental health disabilities,High,"Trivializes a clinical condition. Try ""detail oriented""."
+so bipolar today,Ableism,Mental health disabilities,High,"Stigmatizes clinical diagnoses. Try ""inconsistent""."
+schizophrenic decision making,Ableism,Mental health disabilities,High,"Uses diagnosis as insult. Try ""conflicted""."
+psycho teammate,Ableism,Mental health disabilities,High,"Slur targeting mental illness. Try ""unsafe behavior"" with specifics."
+crazy idea factory,Ableism,Mental health disabilities,Low,"Normalizes stigmatizing language. Try ""wild ideas""."
+insane deadline,Ableism,Mental health disabilities,Low,"Stigmatizing term for intensity. Try ""tight deadline""."
+mental case,Ableism,Mental health disabilities,High,"Dehumanizing label. Try ""needs support"" with specifics."
+addicted to chaos,Ableism,Mental health disabilities,Low,"Stigmatizes mental health and trauma responses. Try ""prefers fast change""."
+panic attack mode,Ableism,Mental health disabilities,Medium,"Trivializes panic attacks as work stress. Try ""high stress moment""."
+triggered employee,Trauma and mental health,Trauma affected,Medium,"Misuses trauma language as a joke. Try ""upset"" if accurate."
+PTSD from that meeting,Trauma and mental health,Trauma affected,High,"Trivializes PTSD. Try ""that was stressful""."
+OCD clean desk,Ableism,Mental health disabilities,High,"Uses OCD as a synonym for neatness. Try ""organized""."
+neurotic about quality,Ableism,Mental health disabilities,Medium,"Stigmatizing mental health descriptors. Try ""high standards""."
+crazy busy,Ableism,Mental health disabilities,Low,"Stigmatizing term for workload. Try ""very busy""."
+lunatic schedule,Ableism,Mental health disabilities,High,"Derogatory mental health slur. Try ""unreasonable schedule""."
+idiot proof,Ableism and hostility,Neurodivergent,Low,"Insults users and can create hostile tone. Try ""user proof""."
+sanity test,Ableism,Mental health disabilities,Medium,"Trivializes mental health. Try ""smoke test""."
+crazy train,Ableism,Mental health disabilities,Low,"Stigmatizing metaphor. Try ""chaotic period""."
+tone deaf leadership,Ableism,Hearing impaired,Low,"Uses disability metaphor for insensitivity. Try ""out of touch leadership""."
+blind review,Ableism,Visually impaired,Low,"Uses blindness metaphor. Try ""anonymous review""."
+turn a blind eye,Ableism,Visually impaired,Medium,"Uses disability metaphor. Try ""ignore""."
+fall on deaf ears,Ableism,Hearing impaired,Medium,"Uses disability metaphor. Try ""be ignored""."
+open the kimono,Racist origins and sexism,Asian and women,High,"Inappropriate metaphor with racist and sexual undertones. Try ""full transparency""."
+no can do,Racist origins,Asian,Medium,"Stereotype phrase mocking accents. Try ""cannot do""."
+Chinese wall,Racist origins,Asian,Medium,"Outdated term for information barriers. Try ""information barrier""."
+Indian giver,Racist slur,Indigenous peoples,High,"Offensive slur. Try ""took back""."
+gypped,Racist slur,Roma people,High,"Derogatory slur. Try ""cheated""."
+grandfather clause,Racist origins,BIPOC,Medium,"Origin tied to voter suppression. Try ""legacy clause""."
+sold down the river,Racist origins,Black professionals,High,"Refers to slavery trade. Try ""betrayed""."
+off the reservation,Cultural appropriation,Indigenous peoples,High,"Appropriates harmful colonial framing. Try ""off plan""."
+low man on the totem pole,Cultural appropriation,Indigenous peoples,Medium,"Misuses sacred imagery for hierarchy. Try ""junior member""."
+too many chiefs not enough indians,Racist origins,Indigenous peoples,High,"Racist phrase about leadership and labor. Try ""unclear ownership""."
+chief,Indigenous appropriation,Indigenous peoples,Medium,"Often used as casual nickname with colonial baggage. Try ""lead"" or ""boss""."
+tribal knowledge,Cultural appropriation,Indigenous peoples,Medium,"Uses tribe as corporate metaphor. Try ""institutional knowledge""."
+tribal leader,Cultural appropriation,Indigenous peoples,Medium,"Appropriates Indigenous governance. Try ""team lead""."
+powwow meeting,Cultural appropriation,Indigenous peoples,High,"Appropriates sacred gathering. Try ""huddle""."
+spirit animal at work,Cultural appropriation,Indigenous peoples,High,"Appropriates spiritual tradition. Try ""favorite""."
+my spirit animal,Cultural appropriation,Indigenous peoples,High,"Appropriates sacred tradition. Try ""I relate to""."
+circle the wagons,Cultural appropriation,Indigenous peoples,Low,"Frontier warfare metaphor. Try ""align as a team""."
+warpath,Cultural appropriation,Indigenous peoples,Medium,"Perpetuates violent stereotypes. Try ""angry""."
+redskin mascot,Racist slur,Indigenous peoples,High,Offensive slur. Avoid entirely.
+savage mode,Racist and cultural coding,Indigenous and BIPOC,Medium,"Dehumanizing descriptor tied to racist history. Try ""intense mode""."
+civilized behavior,Racist coding,BIPOC,Medium,"Implies others are uncivilized. Try ""respectful behavior""."
+articulate for someone from there,Cultural coding,BIPOC,High,"Implies surprise at competence. Try ""clear communicator""."
+so articulate for a,Microaggression,BIPOC,High,"Backhanded compliment implying low expectations. Try ""articulate""."
+not like the others,Microaggression,Underrepresented groups,High,"Othering phrase that isolates individuals. Try ""unique strengths""."
+diversity hire,Tokenism,Underrepresented groups,High,"Reduces person to identity and implies unearned role. Try ""hire""."
+token hire,Tokenism,Underrepresented groups,High,"Implying presence is symbolic not merit based. Try ""team member""."
+quota hire,Tokenism,Underrepresented groups,High,"Implying hiring is only to satisfy quotas. Try ""hire""."
+she got promoted because,Tokenism,Women and BIPOC,High,"Assumes advancement is due to identity. Try ""promotion criteria""."
+DEI hire,Tokenism,Underrepresented groups,High,"Reduces person to DEI program. Try ""hire""."
+forced diversity,Backlash and bias,Underrepresented groups,High,"Frames inclusion as coercion and lowers belonging. Try ""inclusive hiring""."
+reverse discrimination,Backlash and bias,BIPOC and women,High,"Often used to deny systemic bias. Try ""fair process review""."
+playing the race card,Racist trope,BIPOC,High,"Dismisses reports of racism. Try ""address the concern""."
+playing the gender card,Sexism,Women and non binary,High,"Dismisses reports of sexism. Try ""address the concern""."
+angry woman stereotype,Sexism,Women,High,"Stereotype used to dismiss assertiveness. Try ""direct feedback""."
+angry Black woman trope,Racism and sexism,Black women,High,"Weaponized stereotype in feedback. Try ""specific behaviors""."
+sassy attitude,Racialized sexism,Black women and Latinas,Medium,"Stereotype that polices communication. Try ""tone"" with specifics."
+spicy personality,Racialized sexism,Latinas,Medium,"Stereotype that sexualizes or trivializes. Try ""energetic""."
+fiery Latina,Racialized sexism,Latinas,High,"Stereotype that reduces identity. Try ""passionate"" if accurate."
+model minority,Asian bias,Asian professionals,High,"Stereotype that harms and erases diversity. Try ""individual strengths""."
+quiet Asian stereotype,Racist stereotype,Asian professionals,Medium,"Stereotype about communication style. Try ""communication preferences""."
+tiger mom stereotype,Racist stereotype,Asian women,Medium,"Stereotype that reduces people to caricature. Try ""parenting choices""."
+exotic looking,Sexism and racism,Women of color,High,"Objectifies and otherizes. Try ""distinctive""."
+ethnic sounding name,Name bias,BIPOC and immigrants,High,"Used to discriminate in hiring. Try ""name blind review""."
+name is hard to pronounce,Name bias,BIPOC and immigrants,Medium,"Often used to pressure assimilation. Try ""please tell me pronunciation""."
+cultural fit with our vibe,Cultural coding,Underrepresented candidates,High,"Vague and exclusionary. Try ""values alignment""."
+professional hairstyle,Hair discrimination,Black professionals,High,"Often targets natural hair styles. Try ""dress code"" with care."
+unprofessional hair,Hair discrimination,Black professionals,High,"Often targets natural hair. Try ""policy review""."
+needs to straighten hair,Hair discrimination,Black professionals,High,Assimilation pressure. Avoid entirely.
+too urban for clients,Racial coding,Black professionals,High,"Dog whistle implying bias against Black culture. Try ""client preferences"" and challenge."
+looks intimidating,Racial coding,Black men,High,"Often a biased read of Black bodies. Try ""approachable"" with specifics."
+not executive enough,Classism and tone policing,Women and BIPOC,Medium,"Vague standard tied to dominant norms. Try ""specific leadership behaviors""."
+articulation issues,Cultural coding,Non native speakers,Medium,"Can mask accent discrimination. Try ""clarity improvements""."
+communication style mismatch,Cultural coding,BIPOC and women,Medium,"Often vague proxy for bias. Try ""specific examples""."
+too direct for our culture,Gender and cultural bias,Women and BIPOC,Medium,"Penalizes non dominant communication. Try ""feedback norms""."
+too blunt,Gender bias,Women,Low,"Can be gendered in reviews. Try ""specific feedback on phrasing""."
+too aggressive in meetings,Tone policing,Black professionals and women,Medium,"Can be biased label. Try ""interruptions"" with specifics."
+needs to be more likable,Tone policing,Women,Medium,"Gendered demand for warmth. Try ""collaboration behaviors""."
+needs to be less intimidating,Gender and racial bias,Women and BIPOC,Medium,"Biased feedback about presence. Try ""approachability"" with specifics."
+abrasive communicator,Tone policing,Women,Medium,"Often applied unevenly. Try ""specific behaviors""."
+pushy salesperson,Gender bias,Women,Low,"Can be applied unevenly. Try ""sales approach"" with specifics."
+too assertive,Gender bias,Women,Medium,"Double standard for leadership. Try ""assertive"" as positive or be specific."
+not warm enough,Gender bias,Women,Medium,"Penalizes women for not performing warmth. Try ""team rapport"" specifics."
+smile more,Sexism,Women,High,Polices appearance and emotion. Avoid entirely.
+sweetheart in email,Sexism,Women,High,"Infantilizing in professional context. Try ""colleague name""."
+dear girl,Sexism,Women,High,"Infantilizing and disrespectful. Try ""name""."
+little lady,Sexism,Women,High,Infantilizing and sexist. Avoid entirely.
+office mom,Sexism and maternal bias,Women,Medium,"Assigns caretaking role to women. Try ""team coordinator"" if real."
+team mom,Sexism and maternal bias,Women,Medium,"Assigns unpaid emotional labor. Try ""project coordinator""."
+nurturing,Gender bias,Women,High,"Can pigeonhole into support roles. Try ""supportive leadership""."
+too maternal,Maternal bias,Women,Low,"Gendered critique of leadership style. Try ""leadership style""."
+pregnancy leave risk,Maternal bias,Women,High,Discriminatory hiring consideration. Avoid entirely.
+childbearing age,Maternal bias,Women,High,Discriminatory and invasive. Avoid entirely.
+family planning questions,Maternal bias,Women,High,Inappropriate in hiring. Avoid entirely.
+new mom brain,Ableism and sexism,Women,High,"Stereotypes postpartum cognition and undermines competence. Try ""support needs""."
+pregnancy brain,Ableism and sexism,Women,High,Stereotype that undermines competence. Avoid entirely.
+boys will be boys,Sexism,Women and non binary,High,Excuses misconduct and harassment. Avoid entirely.
+locker room talk,Harassment normalization,Women and LGBTQ+,High,"Normalizes sexist language. Try ""respectful conduct""."
+man up,Gender bias,Men and non binary,High,"Toxic masculinity trope. Try ""take responsibility""."
+big boy rules,Gender bias,Non men,Medium,"Gendered framing that excludes. Try ""clear expectations""."
+grow a pair,Gender bias,Non binary and men,High,Toxic masculinity and harassment. Avoid entirely.
+be a man,Gender bias,Men and non binary,High,Enforces masculinity norms. Avoid entirely.
+I need manpower,Gendered language,Women and non binary,Medium,"Defaults male for labor. Try ""staffing""."
+man the phones,Gendered language,Women and non binary,Low,"Gendered phrasing. Try ""staff the phones""."
+chairman of the board,Gendered language,Non men,Low,"Gendered title. Try ""chair""."
+he or she only,Gendered language,Non binary,Medium,"Erases non binary identities. Try ""they""."
+ladies and gentlemen,Gendered language,Non binary,Low,"Enforces binary. Try ""everyone""."
+opposite gender,Heteronormativity,Non binary and LGBTQ+,Medium,"Assumes binary. Try ""different gender""."
+preferred pronouns,Trans bias,Trans and non binary,Medium,"Frames pronouns as preference. Try ""pronouns""."
+real name,Trans bias,Trans individuals,High,"Invalidates chosen name. Try ""legal name"" if required."
+born a man,Transphobia,Trans women,High,"Invalidates identity. Try ""assigned male at birth""."
+born a woman,Transphobia,Trans men,High,"Invalidates identity. Try ""assigned female at birth""."
+sex change,Transphobia,Trans individuals,High,"Outdated framing. Try ""gender affirming care""."
+transgendered,Transphobia,Trans individuals,Low,"Often considered incorrect phrasing. Try ""transgender""."
+identify as a woman,Trans bias,Trans women,Medium,"Implies identity is pretend. Try ""is a woman""."
+identify as a man,Trans bias,Trans men,Medium,"Implies identity is pretend. Try ""is a man""."
+biological sex is,Transphobia,Trans individuals,High,"Often used to invalidate trans identity. Try ""sex assigned at birth""."
+two genders only,Transphobia,Non binary,High,Erases non binary people. Avoid entirely.
+lifestyle choice,Homophobia,LGBTQ+,High,Frames identity as a choice. Avoid entirely.
+sexual preference,Homophobia,LGBTQ+,Medium,"Outdated phrasing. Try ""sexual orientation""."
+normal family,Heteronormativity,LGBTQ+ and single parents,High,"Implies others are abnormal. Try ""family""."
+traditional values,Heteronormativity,LGBTQ+,High,"Often used to exclude LGBTQ+ people. Try ""organizational values""."
+husband and wife,Heteronormativity,LGBTQ+,Low,"Assumes heterosexual pairing. Try ""spouse""."
+wife material,Sexism,Women,Medium,Objectifies women in workplace. Avoid entirely.
+husband material,Sexism,Men,Low,Objectifies men in workplace. Avoid entirely.
+bachelor culture,Sexism and exclusion,Women and caregivers,Medium,"Signals single person norm. Try ""inclusive culture""."
+single person lifestyle,Family status bias,Caregivers,Low,"Assumes availability. Try ""schedule expectations""."
+childless flexibility,Family status bias,Parents and caregivers,Medium,"Penalizes parents. Try ""availability""."
+no kids to worry about,Family status bias,Parents and caregivers,High,Discriminatory and invasive. Avoid entirely.
+primary breadwinner,Gender bias,Women,Medium,"Assumes men earn more. Try ""household earner""."
+stay at home mom stereotype,Sexism,Women,Medium,"Assumes caregiving roles. Try ""caregiver""."
+dead end job,Classism,Working class candidates,High,"Devalues essential roles. Try ""entry role""."
+low class background,Classism,Working class candidates,High,Derogatory and discriminatory. Avoid entirely.
+trailer trash,Classism,Lower income candidates,High,Classist slur. Avoid entirely.
+white collar only,Classism,Working class candidates,Medium,"Excludes skilled trades unfairly. Try ""role requirements""."
+no community college,Classism,Lower income candidates,High,"Arbitrary degree bias. Try ""skills based""."
+top tier school,Classism,Lower income candidates,Medium,"Education elitism. Try ""relevant skills""."
+elite university only,Classism,Lower income candidates,High,"Excludes qualified candidates. Try ""degree or equivalent experience""."
+pedigree background,Classism,Lower income candidates,Medium,"Classist framing. Try ""experience""."
+upper crust,Classism,Working class candidates,High,Derogatory class language. Avoid entirely.
+low rent,Classism,Working class candidates,Medium,"Derogatory class term. Try ""low quality"" if about product."
+ghetto rigged,Classism and racism,BIPOC and lower income,High,"Derogatory and racialized. Try ""improvised""."
+sketchy neighborhood,Classism,BIPOC and lower income,Low,"Can be coded and biased. Try ""unsafe area"" if factual."
+inner city kids,Classism and racism,BIPOC,Medium,"Coded language that can stigmatize. Try ""students""."
+good neighborhood,Classism and racism,BIPOC and lower income,Low,"Can reinforce segregation bias. Try ""safe area"" if factual."
+clean cut,Classism and cultural bias,BIPOC,Medium,"Can pressure assimilation. Try ""professional appearance""."
+professional look,Hair and cultural bias,BIPOC,Medium,"Can be used to police culture. Try ""dress expectations"" narrowly."
+needs to assimilate,Cultural bias,Immigrants and BIPOC,High,"Explicit pressure to conform. Try ""team norms"" with care."
+speak proper English,Cultural bias,Non native speakers,High,"Often used to demean dialects and accents. Try ""clear communication""."
+accent reduction,Cultural bias,Non native speakers,Medium,"Can be discriminatory if not job related. Try ""communication coaching""."
+no foreign experience,Immigration bias,Immigrants,High,"Discounts global experience unfairly. Try ""relevant experience""."
+local experience only,Immigration bias,Immigrants,High,"Excludes immigrants unfairly. Try ""role relevant experience""."
+visa issues,Immigration bias,Immigrants,Medium,"Can be used as blanket exclusion. Try ""work authorization requirements""."
+will you need sponsorship,Immigration bias,Immigrants,Medium,"Can be asked carefully but often misused. Try ""work authorization status""."
+illegal alien,Immigration bias,Immigrants,High,"Dehumanizing term. Try ""undocumented immigrant""."
+third world,Classism and racism,Global South,High,"Derogatory term. Try ""low income country""."
+developing world stereotype,Racism and classism,Global South,Medium,"Can be patronizing. Try ""specific country context""."
+primitive culture,Racism and colonial bias,Indigenous and Global South,High,Dehumanizing colonial framing. Avoid entirely.
+civilized people,Racism and colonial bias,BIPOC,Medium,"Implies others are uncivilized. Try ""residents"" or ""communities""."
+jungle mentality,Racism,BIPOC,High,Dehumanizing racist metaphor. Avoid entirely.
+slave driver,Racist origins,BIPOC,High,"Invokes slavery to describe management. Try ""overbearing manager""."
+crack the whip,Racist origins,BIPOC,High,"Slavery imagery. Try ""enforce standards""."
+black box thinking,Racialized language,BIPOC,Low,"Can be okay in math but may confuse. Try ""opaque system""."
+master branch,Tech Jargon,BIPOC,Medium,"Legacy term with slavery connotations. Try ""main branch""."
+slave process,Tech Jargon,BIPOC,High,"Slavery term in systems. Try ""worker process""."
+master slave replication,Tech Jargon,BIPOC,High,"Explicit slavery pairing in architecture. Try ""primary replica""."
+sanity check before merge,Ableism,Mental health disabilities,Medium,"Trivializes mental health. Try ""quick check""."
+kill the worker process,Tech operations context,Trauma affected,Low,"Violent term in ops. Try ""terminate the process""."
+kill switch,Tech operations context,Trauma affected,Low,"Violent metaphor. Try ""shutdown switch""."
+dummy value,Ableism,Cognitive disabilities,Low,"Can be insulting. Try ""placeholder value""."
+crazy hack, Ableism,Mental health disabilities,Low,"Stigmatizing term for quick fix. Try ""quick hack""."
+quick and dirty solution,Professionalism bias,All employees,Low,"Normalizes sloppy work and can shame. Try ""temporary workaround""."
+blacklist,Racialized language,BIPOC,Medium,"Associates 'black' with bad or blocked. Try ""blocklist"" or ""denylist""."
+whitelist,Racialized language,BIPOC,Medium,"Associates 'white' with good or allowed. Try ""allowlist"" or ""safelist""."
+grandfathered,Racist origins,Black/African American,High,"Originates from 'grandfather clauses' used to deny voting rights to Black Americans. Try ""legacy status"" or ""exempted""."
+man hours,Gendered language,Non-men,Low,"Gendered term for labor. Try ""person-hours"" or ""engineer-hours""."
+sanity test,Ableism,Mental health disabilities,Medium,"Trivializes mental health as a pass fail gate. Try ""smoke test"" or ""basic validation""."
+kill process,Violent tech jargon,Trauma affected,Low,"Violent framing for stopping a task. Try ""terminate process""."
+kill the job,Violent tech jargon,Trauma affected,Low,"Violent metaphor for cancelling batch work. Try ""cancel the job""."
+kill the service,Violent tech jargon,Trauma affected,Low,"Violent metaphor for shutting down a service. Try ""stop the service""."
+abort mission,Militaristic jargon,Trauma affected,Low,"Militaristic phrasing for cancelling a plan. Try ""cancel the plan""."
+dummy variable,Ableism,Cognitive disabilities,Low,"Uses ""dummy"" as a slur. Try ""placeholder variable""."
+sanity gate,Ableism,Mental health disabilities,Medium,"Frames sanity as a quality check. Try ""quality gate""."
+crazy mode,Ableism,Mental health disabilities,Low,"Stigmatizing mental health as chaos. Try ""debug mode""."
+insane performance,Ableism,Mental health disabilities,Low,"Uses mental health language as hyperbole. Try ""exceptional performance""."
+lunatic fringe,Ableism,Mental health disabilities,High,"Derogatory label for people with non mainstream views. Try ""extreme views""."
+paranoid checks,Ableism,Mental health disabilities,Low,"Uses diagnosis as an insult. Try ""extra cautious checks""."
+OCD-level detail,Ableism,Mental health disabilities,High,"Trivializes OCD as perfectionism. Try ""extreme attention to detail""."
+spaz out,Ableism,Physical disabilities,High,"Offensive slang tied to spasticity. Try ""lose composure""."
+cripple the system,Ableism,Physical disabilities,High,"Uses disability as metaphor for damage. Try ""break the system""."
+brain dead code,Ableism,Cognitive disabilities,High,"Dehumanizing metaphor. Try ""non functional code""."
+vegetable state,Ableism,Cognitive disabilities,High,Dehumanizing term for a person. Avoid entirely.
+tone deaf comment,Ableism,Hearing impaired,Medium,"Uses disability as synonym for insensitivity. Try ""insensitive comment""."
+blind review metaphor,Ableism,Visually impaired,Low,"Misuses blindness as abstraction. Try ""anonymous review""."
+on the spectrum joke,Neurodiversity,Autistic individuals,High,Makes autism a punchline. Avoid entirely.
+autistic screeching meme,Neurodiversity,Autistic individuals,High,Dehumanizing meme trope. Avoid entirely.
+schizo architecture,Ableism,Mental health disabilities,High,"Uses schizophrenia as synonym for chaotic. Try ""incoherent architecture""."
+psychotic behavior,Ableism,Mental health disabilities,High,"Clinical term used casually as insult. Try ""harmful behavior""."
+bipolar roadmap,Ableism,Mental health disabilities,High,"Uses diagnosis as metaphor. Try ""inconsistent roadmap""."
+wheelchair icon as joke,Ableism,Physical disabilities,High,Mocking accessibility symbols. Avoid entirely.
+tone policing,Ableism and racism,Women/BIPOC,Medium,"Invalidates content by focusing on tone. Try ""address the concern directly""."
+code ninja mindset,Tech Bro Culture,Women/Non-traditional,Medium,"Martial imagery that can signal exclusionary culture. Try ""skilled engineer""."
+rockstar developer,Tech Bro Culture,Collaborative workers,Medium,"Hero worship that devalues teamwork. Try ""experienced developer""."
+superstar engineer,Tech Bro Culture,Collaborative workers,Medium,"Inflated label that can mask burnout expectations. Try ""high performing engineer""."
+warrior coder,Tech Bro Culture,Collaborative workers,Low,"Militaristic framing of engineering. Try ""dedicated engineer""."
+brogrammer vibe,Tech Bro Culture,Women/Non-traditional,Medium,"Signals exclusionary male centric culture. Try ""inclusive engineering culture""."
+grindset mentality,Tech Bro Culture,Disabled workers,Medium,"Glorifies relentless hustle over wellbeing. Try ""sustainable productivity""."
+alpha dev,Tech Bro Culture,Women/Non-traditional,Medium,"Frames leadership as dominance. Try ""lead engineer""."
+crush the competition,Tech Bro Culture,All employees,Low,"Aggressive framing that can normalize hostility. Try ""outperform competitors""."
+dominate the market,Tech Bro Culture,All employees,Low,"Hyper competitive framing. Try ""gain market share""."
+hackathon widow,Sexism and work life bias,Partners of overworked staff,Medium,"Normalizes extreme overtime that harms families. Try ""work life balance""."
+no life outside work,Work life bias,Caregivers,High,"Glorifies total work devotion. Try ""committed during work hours""."
+sleep is for the weak,Work life bias,Disabled workers,High,"Stigmatizes rest and health needs. Try ""rest improves performance""."
+24/7 hustle,Work life bias,Disabled workers,Medium,"Promotes unsustainable always on culture. Try ""focused working hours""."
+must live and breathe code,Tech Bro Culture,Neurodivergent,Medium,"Frames identity only through work. Try ""strong interest in software""."
+code is life,Tech Bro Culture,Neurodivergent,Low,"Can pressure unhealthy identification with work. Try ""enjoys coding""."
+work hard play hard culture,Work life bias,Caregivers,Medium,"Pressures after hours socializing. Try ""respectful work life boundaries""."
+party culture at work,Inclusion bias,Religious minorities,Medium,"Alcohol centric culture that excludes some employees. Try ""optional inclusive events""."
+frat house environment,Sexism and inclusion bias,Women/Non-binary,High,"Signals toxic male dominated culture. Try ""professional and inclusive""."
+locker room environment,Sexism and harassment risk,Women/LGBTQ+,High,"Normalizes sexist or homophobic jokes. Try ""respectful environment""."
+boys club leadership,Sexism,Women/Non-binary,High,"Implies women are excluded from leadership. Try ""diverse leadership""."
+he is a family man bonus,Maternal bias,Women,Medium,"Rewards fatherhood while penalizing motherhood. Try ""supports family responsibilities""."
+mommy track role,Maternal bias,Women,High,"Assumes mothers want slower careers. Try ""flexible track by choice""."
+working mom question,Maternal bias,Women,High,Questions mothers commitment to work. Avoid entirely.
+new mom risk,Maternal bias,Women,High,Frames motherhood as liability. Avoid entirely.
+pregnancy penalty,Maternal bias,Women,High,Assumes pregnancy reduces value. Avoid entirely.
+too pretty for this role,Sexism,Women,High,Objectifies and questions competence. Avoid entirely.
+office eye candy,Sexism,Women,High,Reduces women to appearance. Avoid entirely.
+arm candy at events,Sexism,Women,High,Uses women as status symbols. Avoid entirely.
+girls in the office,Sexism,Women,Medium,"Infantilizes adult women. Try ""women in the office""."
+females in tech,Sexism,Women,Medium,"Dehumanizing categorical term. Try ""women in tech""."
+emotional female,Sexism,Women,High,"Gendered dismissal of emotion. Try ""upset colleague""."
+too girly for leadership,Sexism,Women,High,"Uses stereotypes to block advancement. Try ""leadership style feedback""."
+she is too soft,Sexism,Women,Medium,"Gendered critique that can mask bias. Try ""conflict handling style""."
+abrasive when she speaks,Tone policing,Women/BIPOC,Medium,"Vague critique that is often gendered or racialized. Try ""specific behavior""."
+bossy project manager,Sexism,Women,Medium,"Penalizes assertive women. Try ""decisive""."
+shrill on calls,Sexism,Women,High,"Gendered descriptor for voice. Try ""speaks loudly"" if needed."
+hysterical reaction,Sexism,Women,High,"Historical term used to dismiss women. Try ""strong reaction""."
+catfight at work,Sexism,Women,High,"Sexist framing of conflict between women. Try ""disagreement""."
+drama queen label,Sexism,Women,High,"Gendered slur that trivializes concerns. Try ""expressive""."
+asking for it with that outfit,Victim blaming,Women,High,Blames harassment on clothing. Avoid entirely.
+gold digger stereotype,Sexism,Women,Medium,Stereotype used to discredit women. Avoid entirely.
+office mom role,Sexism/Maternal bias,Women,Medium,"Unpaid caretaking expectation. Try ""team support rotation""."
+he wears the pants,Sexism,Women/Non-binary,Medium,"Gendered power framing. Try ""makes household decisions""."
+not ladylike behavior,Sexism,Women,Medium,"Polices behavior based on gender norms. Try ""unprofessional behavior""."
+man up and lead,Gendered language,Men/Non-binary,High,"Enforces harmful masculinity norms. Try ""step up and lead""."
+grow a spine man,Gendered language,Men/Non-binary,Medium,"Shames emotional expression. Try ""be more decisive""."
+we need a strong male presence,Sexism,Women/Non-binary,High,Assumes gender for authority. Avoid entirely.
+she is too strong for a woman,Sexism,Women,High,"Backhanded critique reinforcing stereotypes. Try ""assertive""."
+backup wife at work,Sexism,Women,High,Frames colleague as secondary caregiver. Avoid entirely.
+token woman on the panel,Tokenism,Women,High,"Reduces presence to optics. Try ""subject matter expert""."
+diversity hire joke,Tokenism,Underrepresented groups,High,Undermines competence. Avoid entirely.
+affirmative action hire insult,Tokenism,Underrepresented groups,High,Frames equity efforts as unfair. Avoid entirely.
+quota candidate,Tokenism,Underrepresented groups,High,Suggests person only meets numeric goal. Avoid entirely.
+lowering the bar for diversity,Backlash bias,Underrepresented groups,High,Frames inclusion as reducing quality. Avoid entirely.
+pedigree candidate only,Classism,Lower-income candidates,Medium,"Overemphasizes elite backgrounds. Try ""skills based""."
+blue blood background,Classism,Lower-income candidates,High,Classist reference to aristocracy. Avoid entirely.
+old money connections,Classism,Lower-income candidates,Medium,"Signals preference for inherited wealth. Try ""industry network""."
+country club fit,Classism,Lower-income candidates,Medium,"Class coded social requirement. Try ""professional network""."
+silver spoon upbringing,Classism,Lower-income candidates,Medium,Derogatory or exclusionary class language. Avoid entirely.
+from the wrong side of the tracks,Classism,Lower-income candidates,High,Classist metaphor about neighborhoods. Avoid entirely.
+trailer park trash,Classism,Lower-income candidates,High,Classist slur. Avoid entirely.
+white trash stereotype,Classism,Lower-income candidates,High,Classist and racist slur. Avoid entirely.
+inner city attitude,Classism/Racism,BIPOC,High,Dog whistle about behavior tied to location. Avoid entirely.
+rough around the edges from that neighborhood,Classism,Lower-income candidates,Medium,"Classist judgment. Try ""unpolished professional skills""."
+no posh background,Classism,Lower-income candidates,Low,Backhanded comment about class. Avoid entirely.
+elitist Ivy pipeline,Classism,Lower-income candidates,Medium,"Overreliance on a few elite schools. Try ""broaden recruiting""."
+non Ivy downgrade,Classism,Lower-income candidates,Medium,Treats non elite schools as inferior by default. Avoid entirely.
+community college stigma,Classism,Lower-income candidates,Medium,Unfair bias against two year programs. Avoid entirely.
+polished accent only,Classism/Culture,Non-native speakers,High,"Bias toward certain accents. Try ""clear communication""."
+rough accent concern,Classism/Culture,Non-native speakers,Medium,"Can be coded bias. Try ""speech clarity support""."
+no heavy accent,Classism/Culture,Non-native speakers,High,Exclusion of speakers based on accent. Avoid entirely.
+native sounding name,Name bias,Immigrants/BIPOC,High,"Can encode bias for certain backgrounds. Try ""name blind review""."
+hard to pronounce name complaint,Name bias,Immigrants/BIPOC,Medium,"Pressures assimilation. Try ""ask for pronunciation""."
+ethnic name concern,Name bias,Immigrants/BIPOC,High,"Uses ""ethnic"" as coded negative. Avoid entirely."
+not a cultural fit with our vibe,Culture fit bias,Underrepresented candidates,High,"Vague barrier that can hide bias. Try ""values alignment""."
+too urban for leadership,Racial coding,Black professionals,High,Dog whistle about race and style. Avoid entirely.
+street smart but not polished,Classism,Racial minorities,Medium,"Class coded compliment with insult. Try ""practical experience""."
+ghetto mentality,Classism/Racism,BIPOC,High,Derogatory racialized phrase. Avoid entirely.
+third world work ethic stereotype,Racism,Global South,High,Racist generalization about productivity. Avoid entirely.
+off the boat comment,Racism,Immigrants,High,Dehumanizing immigration slur. Avoid entirely.
+go back where you came from,Racism,Immigrants/BIPOC,High,Classic racist dismissal. Avoid entirely.
+English only culture,Cultural bias,Non-native speakers,High,"Excludes multilingual workers. Try ""working language is English"" with support."
+must be American born,Cultural bias,Immigrants,High,National origin discrimination. Avoid entirely.
+ethnic looking candidate,Racism,BIPOC,High,Reduces people to racialized appearance. Avoid entirely.
+exotic look compliment,Racism/Sexism,Women of color,High,"Objectifying racialized ""compliment"". Avoid entirely.stewardess",Gendered Job Titles,Women,Medium,Instead of 'stewardess', use the more inclusive term 'flight attendant'.
+stewardesses,Gendered Job Titles,Women,Medium,Instead of 'stewardess', use the more inclusive term 'flight attendant'.
+nutjob,Ableism,Mental health disabilities,High,"Stigmatizing mental health term. Try ""irrational"" or ""unpredictable""."
+cleaning lady,Gender roles,Gendered expectations,Low,"Gendered term for a cleaner. Try ""cleaner"" or ""cleaning staff""."
+manning,Gender roles,Gendered expectations,Medium,"Gendered term for staffing. Try ""staffing"" or ""crewing""."
+retard,Ableism,Intellectual disabilities,High,"A severe ableist slur. Try ""foolish"" or ""ill-advised"" instead."
+hag,Ageism / Sexism,Older women,High,"A sexist and ageist slur. Try ""older woman"" or ""disagreeable person""."
+wacko,Ableism,Mental health disabilities,High,"A stigmatizing mental health slur. Try ""unpredictable"" or ""irrational""."
+spazz,Ableism,Physical/Motor disabilities,High,"An ableist slur derived from spastic. Try ""clumsy"" or ""erratic""."
+dinosaurs in the IT department,Ageism,Older workers,High,A derogatory metaphor. Try legacy staff.
+IT dinosaurs,Ageism,Older workers,High,A derogatory metaphor. Try legacy staff.
+wackoooo,Ableism,Mental Health,High,A typo for wacko. Try chaotic.
+pansy,Homophobia/Sexism,Men/LGBTQ+,High,A slur. Try weak.
+hysterical woman,Sexism,Women,High,A sexist trope. Try overly emotional.
+bimboo,Sexism,Women,High,A sexist slur. Try unqualified.
+bimbo,Sexism,Women,High,A sexist slur. Try unqualified.
+lunatic,Ableism,People with mental health conditions,High,An ableist slur equating mental illness with incompetence. Try unconventional or unpredictable.
+deaf,Ableism,People with hearing disabilities,High,Can be ableist when used as a metaphor for ignoring. Try unresponsive or inattentive.
+blind,Ableism,People with visual impairments,Medium,Using disability-related terms as negative metaphors. Consider replacing with more inclusive alternatives such as unaware or overlooked.
+schizophrenic,Ableism,Mental health,High,"A severe slur. Try ""erratic"" or ""unpredictable""."
+gypsy,Racial coding,Romani people,High,"A severe ethnic slur. Try ""Romani"" or ""traveller""."
