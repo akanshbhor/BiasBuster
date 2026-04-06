@@ -153,7 +153,7 @@ def _init_chroma_rules():
         _bias_rules_collection = _chroma_client.create_collection(  # type: ignore
             "bias_rules", metadata={"hnsw:space": "cosine"}
         )
-        rules_path = os.path.join(os.path.dirname(__file__), "rules.json")
+        rules_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "rules.json")
         if os.path.exists(rules_path):
             with open(rules_path, "r", encoding="utf-8") as f:
                 rules = json.load(f)
@@ -294,7 +294,7 @@ FALSE_POSITIVES_CACHE = {
 BLACKLIST = set()
 
 def _init_feedback_db():
-    db_path = os.path.join(os.path.dirname(__file__), "feedback.db")
+    db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feedback.db")
     try:
         conn = sqlite3.connect(db_path)
         cur = conn.cursor()
@@ -357,7 +357,7 @@ def submit_feedback():
     if not word or label not in [0, 1]:
         return jsonify({"error": "Invalid payload"}), 400
 
-    db_path = os.path.join(os.path.dirname(__file__), "feedback.db")
+    db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "feedback.db")
     try:
         conn = sqlite3.connect(db_path)
         cur = conn.cursor()
@@ -395,7 +395,7 @@ def _bias_db_path() -> str:
 
     We now store `bias_database.csv` in the same directory.
     """
-    return os.path.join(os.path.dirname(__file__), "bias_database.csv")
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), "bias_database.csv")
 
 
 def _bias_dictionary_path() -> str:
@@ -405,7 +405,7 @@ def _bias_dictionary_path() -> str:
     In dictionary-only mode we prefer a `bias_dictionary.csv` in the project root.
     If it doesn't exist, fall back to the legacy `bias_database.csv`.
     """
-    root = os.path.dirname(__file__)
+    root = os.path.dirname(os.path.abspath(__file__))
     preferred = os.path.join(root, "bias_dictionary.csv")
     fallback = os.path.join(root, "bias_database.csv")
     return preferred if os.path.exists(preferred) else fallback
