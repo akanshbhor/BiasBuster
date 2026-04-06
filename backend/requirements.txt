@@ -11,5 +11,5 @@ scipy
 chromadb
 nltk
 faiss-cpu
-gunicorn
+gunicorn 
 pyspellchecker

@@ -21,7 +21,7 @@ const isLocalhost =
   window.location.protocol === 'file:';
 
 // If you deploy your backend, replace this with your deployed URL.
-const API_BASE_URL = isLocalhost ? 'http://127.0.0.1:5000' : 'https://biasbuster-backend-1b3h.onrender.com';
+const API_BASE_URL = isLocalhost ? 'http://127.0.0.1:5000' : 'https://biasbuster-backend-9jqiy.ondigitalocean.app';
 
 /**
  * Small helper to:
@@ -72,10 +72,10 @@ window.fetchUnifiedAIResponse = async function fetchUnifiedAIResponse(promptText
   try {
     const endpoint =
       model === 'gemini' ? '/api/generate/gemini'
-      : model === 'llama' ? '/api/generate/llama'
-      : model === 'qwen' ? '/api/generate/qwen'
-      : model === 'gptoss' ? '/api/generate/gptoss'
-      : '/api/generate/gemini';
+        : model === 'llama' ? '/api/generate/llama'
+          : model === 'qwen' ? '/api/generate/qwen'
+            : model === 'gptoss' ? '/api/generate/gptoss'
+              : '/api/generate/gemini';
 
     const result = await postJson(endpoint, { prompt: promptText });
     if (!result.ok) return `Error: ${model.toUpperCase()} - ${result.error}`;

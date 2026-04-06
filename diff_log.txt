@@ -1,0 +1,8 @@
+DELETED (in working tree): c:\BiasBuster\BiasBuster
+ADDED (in working tree): c:\BiasBuster\.gitignore
+ADDED (in working tree): c:\BiasBuster\README.md
+ADDED (in working tree): c:\BiasBuster\backend
+ADDED (in working tree): c:\BiasBuster\bias_database.csv
+ADDED (in working tree): c:\BiasBuster\diff_log.txt
+ADDED (in working tree): c:\BiasBuster\feedback.db
+ADDED (in working tree): c:\BiasBuster\frontend

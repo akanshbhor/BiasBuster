@@ -3320,5 +3320,4 @@ if __name__ == '__main__':
         _init_faiss_index(_startup_db_rows)
     except Exception as _init_err:
         print(f"WARNING: FAISS startup init failed: {_init_err}")
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(debug=True, port=5000)

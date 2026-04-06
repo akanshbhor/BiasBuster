@@ -147,7 +147,7 @@ def _print_report(
             label = f"     • {word}"
             print(f"║  {label:<60}║")
     else:
-        print(f"║       {'(none)':>0:<55}║")
+        print(f"║       {'(none)':<55}║")
 
     # ── Reasoning ──
     print(f"║                                                              ║")
