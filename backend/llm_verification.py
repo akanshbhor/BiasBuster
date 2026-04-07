@@ -339,15 +339,16 @@ def _parse_response(raw: str) -> Optional[dict]:
 
 # ─── Main Entry Point ────────────────────────────────────────────────────────
 
-def _run_verification(user_prompt: str, ai_response: str, detected_issues: dict) -> list[str]:
+def _run_verification(user_prompt: str, ai_response: str, detected_issues: dict) -> tuple[list[str], list[dict]]:
     """
     Internal verification runner. Executes synchronously.
+    Returns (false_positives, missed) — both lists.
     All exceptions are caught and logged — never propagated.
     """
     try:
         # Don't verify if both are empty
         if not (user_prompt.strip() or ai_response.strip()):
-            return []
+            return [], []
 
         start_time = time.time()
 
@@ -362,7 +363,7 @@ def _run_verification(user_prompt: str, ai_response: str, detected_issues: dict)
                 f"Both models failed or unavailable. "
                 f"Verification skipped — core detection results are unaffected."
             )
-            return []
+            return [], []
 
         latency = time.time() - start_time
 
@@ -374,7 +375,7 @@ def _run_verification(user_prompt: str, ai_response: str, detected_issues: dict)
                 f"LLM returned unparseable response ({model_used}). "
                 f"Raw output logged below:\n{raw_response[:300]}"
             )
-            return []
+            return [], []
 
         # Extract fields with safe defaults
         confirmed = parsed.get("confirmed", [])
@@ -401,7 +402,7 @@ def _run_verification(user_prompt: str, ai_response: str, detected_issues: dict)
             missed=missed,
             reasoning=reasoning,
         )
-        return false_positives
+        return false_positives, missed
 
     except Exception as e:
         # Absolute last-resort catch — never crash, never block
@@ -409,13 +410,18 @@ def _run_verification(user_prompt: str, ai_response: str, detected_issues: dict)
             _print_warning(f"Unexpected error in verification thread: {type(e).__name__}: {e}")
         except Exception:
             pass  # Even print failed — silently swallow
-        return []
+        return [], []
 
 
-def verify_bias_sync(user_prompt: str, ai_response: str, detected_issues: dict) -> list[str]:
+def verify_bias_sync(user_prompt: str, ai_response: str, detected_issues: dict) -> tuple[list[str], list[dict]]:
     """
     Public entry point. Runs the LLM verification synchronously.
     
+    Returns:
+        A tuple of (false_positives, missed).
+        - false_positives: list of term strings the LLM marked as not biased.
+        - missed: list of dicts with keys: word, dimension, severity, source.
+
     Args:
         user_prompt: The clean user prompt (or empty if n/a).
         ai_response: The generated AI response (or empty if n/a).

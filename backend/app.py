@@ -2659,11 +2659,14 @@ def _spellcheck_and_build_clean(text: str, db_rows) -> tuple[str, list[dict]]:
             clean_text = clean_text.replace(stripped, normalized, 1)
 
     # Phase 1: Difflib for specific bias triggers
-    difflib_typos = _find_typos(text, db_rows)
-    for t in difflib_typos:
-        typos.append(t)
-        pattern = re.compile(rf"\b{re.escape(t['original'])}\b", re.IGNORECASE)
-        clean_text = pattern.sub(t['suggested'], clean_text)
+    # DISABLED — difflib aggressively mutates valid words into bias triggers
+    # (e.g., 'instances' → 'insane', 'planning' → 'manning').
+    # Keeping Phase 0 (leet-speak) and Phase 2 (fused prefix) for anti-evasion.
+    # difflib_typos = _find_typos(text, db_rows)
+    # for t in difflib_typos:
+    #     typos.append(t)
+    #     pattern = re.compile(rf"\b{re.escape(t['original'])}\b", re.IGNORECASE)
+    #     clean_text = pattern.sub(t['suggested'], clean_text)
 
     # Phase 2: Fused prefix separation (e.g. verybossy -> very bossy)
     _trigger_set = set()
@@ -2763,15 +2766,17 @@ def _spellcheck_and_build_clean(text: str, db_rows) -> tuple[str, list[dict]]:
                     continue
 
         # Standard pyspellchecker fallback for non-repeated-char typos
-        if _spell is not None and len(lower_token) <= 25 and not _spell.known([lower_token]):
-            correction = _spell.correction(lower_token)
-            if correction and correction != lower_token:
-                typos.append({
-                    "original": token,
-                    "suggested": correction
-                })
-                pattern = re.compile(rf"\b{re.escape(token)}\b", re.IGNORECASE)
-                clean_text = pattern.sub(correction, clean_text)
+        # DISABLED — pyspellchecker aggressively mutates valid words into
+        # bias triggers (e.g., 'planning' → 'manning').
+        # if _spell is not None and len(lower_token) <= 25 and not _spell.known([lower_token]):
+        #     correction = _spell.correction(lower_token)
+        #     if correction and correction != lower_token:
+        #         typos.append({
+        #             "original": token,
+        #             "suggested": correction
+        #         })
+        #         pattern = re.compile(rf"\b{re.escape(token)}\b", re.IGNORECASE)
+        #         clean_text = pattern.sub(correction, clean_text)
 
     # Phase 4: Spelling corrections for "variant" DB triggers
     # Words like 'bimboo' or 'wackoooo' may be literally in the DB as triggers
@@ -3137,20 +3142,23 @@ def evaluate_bias():
 
     # ── Synchronous LLM Verification (BLOCKING) ──
     # The endpoint HALTS here until verify_bias_sync returns.
-    # Only AFTER false positives are removed do we build the JSON response.
+    # Only AFTER false positives are removed and missed biases ingested do we build the JSON response.
     if verify_bias_sync is not None:
         try:
             user_prompt = data.get("user_prompt", clean_text if not is_ai_response else "")
             ai_resp = data.get("ai_response", clean_text if is_ai_response else "")
 
             print(f"  [BLOCKING] LLM verification starting — response is HELD...")
-            false_positives = verify_bias_sync(user_prompt, ai_resp, issues)
-            print(f"  [BLOCKING] LLM verification complete — got {len(false_positives or [])} false positives")
+            false_positives, missed = verify_bias_sync(user_prompt, ai_resp, issues)
+            print(f"  [BLOCKING] LLM verification complete — got {len(false_positives or [])} FPs, {len(missed or [])} missed")
 
             # Null-safe: treat None as empty list
             if not isinstance(false_positives, list):
                 false_positives = []
+            if not isinstance(missed, list):
+                missed = []
 
+            # ── Remove false positives from the issues dict ──
             for fp in false_positives:
                 fp_lower = str(fp).strip().lower()
                 keys_to_delete = []
@@ -3162,7 +3170,31 @@ def evaluate_bias():
                     del issues[k]
                     print(f"  [REMOVED] '{k}' from issues dict (LLM Verified FP)")
 
-            print(f"  [BLOCKING] Final issues count after FP removal: {len(issues)}")
+            # ── Ingest missed biases into the issues dict ──
+            for m in missed:
+                if not isinstance(m, dict):
+                    continue
+                word = str(m.get("word", "")).strip()
+                if not word:
+                    continue
+                # Skip if already present
+                if word.lower() in {str(k).strip().lower() for k in issues}:
+                    continue
+                dimension = str(m.get("dimension", "Contextual Bias")).strip()
+                severity = str(m.get("severity", "Medium")).strip()
+                source = str(m.get("source", "unknown")).strip()
+                issues[word] = {
+                    "biased_word": word,
+                    "dimension": dimension,
+                    "severity": severity,
+                    "impact": "Contextual/LLM Detected",
+                    "type": "llm_missed",
+                    "source": source,
+                    "affected_group": dimension,
+                }
+                print(f"  [ADDED] '{word}' to issues dict (LLM Missed — {dimension}, {severity})")
+
+            print(f"  [BLOCKING] Final issues count after LLM adjustments: {len(issues)}")
         except Exception as e:
             print(f"  [ERROR] LLM verification logic failed: {e}")
 
