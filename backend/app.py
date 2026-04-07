@@ -3143,13 +3143,40 @@ def evaluate_bias():
     # ── Synchronous LLM Verification (BLOCKING) ──
     # The endpoint HALTS here until verify_bias_sync returns.
     # Only AFTER false positives are removed and missed biases ingested do we build the JSON response.
+    #
+    # IMPORTANT: The LLM's false-positive filter is NOT trained on implicit bias
+    # (agentic/communal workplace language).  It aggressively drops valid implicit
+    # bias flags because it treats soft-skill words as benign.  To prevent this we
+    # split the issues dict into two groups:
+    #   1. implicit_bypass_issues — L2-flagged implicit bias terms (agentic, communal,
+    #      implicit_warning).  These are HELD and never sent to the LLM.
+    #   2. llm_verifiable_issues — everything else.  Only these are verified.
+    # After verification the two dicts are merged back together.
+
     if verify_bias_sync is not None:
         try:
+            # ── Step A: Partition issues ──
+            implicit_bypass_issues: dict[str, dict] = {}
+            llm_verifiable_issues: dict[str, dict] = {}
+
+            for k, issue in issues.items():
+                issue_type = str(issue.get("type") or "").lower()
+                # Implicit bias terms that the LLM would incorrectly reject
+                if issue_type in ("agentic", "communal", "implicit_warning"):
+                    implicit_bypass_issues[k] = issue
+                else:
+                    llm_verifiable_issues[k] = issue
+
+            bypassed_count = len(implicit_bypass_issues)
+            verifiable_count = len(llm_verifiable_issues)
+            print(f"  [LLM SPLIT] {bypassed_count} implicit-bias issues BYPASSED, {verifiable_count} sent to LLM")
+
+            # ── Step B: Run LLM verification ONLY on the non-implicit issues ──
             user_prompt = data.get("user_prompt", clean_text if not is_ai_response else "")
             ai_resp = data.get("ai_response", clean_text if is_ai_response else "")
 
             print(f"  [BLOCKING] LLM verification starting — response is HELD...")
-            false_positives, missed = verify_bias_sync(user_prompt, ai_resp, issues)
+            false_positives, missed = verify_bias_sync(user_prompt, ai_resp, llm_verifiable_issues)
             print(f"  [BLOCKING] LLM verification complete — got {len(false_positives or [])} FPs, {len(missed or [])} missed")
 
             # Null-safe: treat None as empty list
@@ -3158,32 +3185,35 @@ def evaluate_bias():
             if not isinstance(missed, list):
                 missed = []
 
-            # ── Remove false positives from the issues dict ──
+            # ── Step C: Remove false positives from the verifiable issues ──
             for fp in false_positives:
                 fp_lower = str(fp).strip().lower()
                 keys_to_delete = []
-                for k, issue in issues.items():
+                for k, issue in llm_verifiable_issues.items():
                     bw = str(issue.get("biased_word", k)).strip().lower()
                     if bw == fp_lower or str(k).strip().lower() == fp_lower:
                         keys_to_delete.append(k)
                 for k in keys_to_delete:
-                    del issues[k]
+                    del llm_verifiable_issues[k]
                     print(f"  [REMOVED] '{k}' from issues dict (LLM Verified FP)")
 
-            # ── Ingest missed biases into the issues dict ──
+            # ── Step D: Ingest missed biases into the verifiable issues ──
+            # Also check implicit_bypass_issues to avoid adding duplicates of
+            # terms that are already held in the bypass bucket.
+            all_existing_keys = {str(k).strip().lower() for k in llm_verifiable_issues} | {str(k).strip().lower() for k in implicit_bypass_issues}
             for m in missed:
                 if not isinstance(m, dict):
                     continue
                 word = str(m.get("word", "")).strip()
                 if not word:
                     continue
-                # Skip if already present
-                if word.lower() in {str(k).strip().lower() for k in issues}:
+                # Skip if already present in either bucket
+                if word.lower() in all_existing_keys:
                     continue
                 dimension = str(m.get("dimension", "Contextual Bias")).strip()
                 severity = str(m.get("severity", "Medium")).strip()
                 source = str(m.get("source", "unknown")).strip()
-                issues[word] = {
+                llm_verifiable_issues[word] = {
                     "biased_word": word,
                     "dimension": dimension,
                     "severity": severity,
@@ -3192,9 +3222,13 @@ def evaluate_bias():
                     "source": source,
                     "affected_group": dimension,
                 }
+                all_existing_keys.add(word.lower())
                 print(f"  [ADDED] '{word}' to issues dict (LLM Missed — {dimension}, {severity})")
 
-            print(f"  [BLOCKING] Final issues count after LLM adjustments: {len(issues)}")
+            # ── Step E: Merge bypassed implicit bias issues back in ──
+            issues = {**llm_verifiable_issues, **implicit_bypass_issues}
+
+            print(f"  [BLOCKING] Final issues count after LLM adjustments: {len(issues)} (verified: {len(llm_verifiable_issues)}, bypassed: {bypassed_count})")
         except Exception as e:
             print(f"  [ERROR] LLM verification logic failed: {e}")
 
