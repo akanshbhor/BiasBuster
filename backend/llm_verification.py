@@ -82,6 +82,23 @@ Focus areas for "missed" detection:
 - Socioeconomic gatekeeping language ("pedigree", "top-tier", "Ivy league only").
 - Name/origin bias indicators.
 
+CRITICAL DIRECTIVE — Metaphorical Demographic Bias and Workplace Tropes:
+Terms like "dinosaurs", "fossils", "greybeards", "old guard", "deadwood", "relics", \
+"over the hill", or "past their prime" used in corporate, workplace, HR, or \
+professional contexts MUST be assumed to refer to PEOPLE (Ageism) unless the \
+surrounding text EXPLICITLY and UNAMBIGUOUSLY refers ONLY to hardware, software, \
+or non-human systems. The mere presence of technology-adjacent words like \
+"department", "team", "IT", "systems", or "infrastructure" is NOT sufficient to \
+disambiguate — these words commonly describe groups of PEOPLE. You must apply the \
+"reasonable HR auditor" standard: if a phrase could plausibly describe employees \
+or colleagues in a demeaning age-related way, it IS ageist bias and MUST be \
+confirmed, NOT marked as a false positive. Examples:
+  - "dinosaurs in the IT department" → CONFIRMED (Ageism — refers to older employees)
+  - "fossil systems from the 90s" → FALSE POSITIVE (explicitly about software)
+  - "greybeards running the servers" → CONFIRMED (Ageism — refers to people)
+  - "this codebase is a fossil" → FALSE POSITIVE (explicitly about code)
+  - "deadwood on the engineering team" → CONFIRMED (Ageism — refers to people)
+
 Be strict: flag ALL exclusionary proxies, dog whistles, and gated requirements, but allow neutral professional language.\
 """
 
