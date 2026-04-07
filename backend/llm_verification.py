@@ -378,20 +378,37 @@ def _run_verification(user_prompt: str, ai_response: str, detected_issues: dict)
             return [], []
 
         # Extract fields with safe defaults
-        confirmed = parsed.get("confirmed", [])
+        llm_confirmed = parsed.get("confirmed", [])
         false_positives = parsed.get("false_positives", [])
         missed = parsed.get("missed", [])
         reasoning = parsed.get("reasoning", "")
 
         # Ensure types are correct
-        if not isinstance(confirmed, list):
-            confirmed = []
+        if not isinstance(llm_confirmed, list):
+            llm_confirmed = []
         if not isinstance(false_positives, list):
             false_positives = []
         if not isinstance(missed, list):
             missed = []
         if not isinstance(reasoning, str):
             reasoning = str(reasoning)
+
+        # ── Programmatically compute confirmed terms ──
+        # The LLM uses a subtractive filter and often returns an empty/incomplete
+        # "confirmed" array.  We compute confirmed = original_flagged − false_positives
+        # so the terminal report always shows which terms survived the filter.
+        original_flagged: list[str] = []
+        for _k, _iss in detected_issues.items():
+            if _k == "implicit bias warning":
+                continue
+            if str(_iss.get("type", "")).lower() == "spelling":
+                continue
+            word = str(_iss.get("biased_word", _k)).strip()
+            if word:
+                original_flagged.append(word)
+
+        fp_lower_set = {str(fp).strip().lower() for fp in false_positives}
+        confirmed = [w for w in original_flagged if w.strip().lower() not in fp_lower_set]
 
         # Print the beautiful terminal report
         _print_report(
