@@ -323,9 +323,9 @@ def _parse_response(raw: str) -> Optional[dict]:
 
 # ─── Main Entry Point ────────────────────────────────────────────────────────
 
-def _run_verification(user_prompt: str, ai_response: str, detected_issues: dict) -> None:
+def _run_verification(user_prompt: str, ai_response: str, detected_issues: dict) -> list[str]:
     """
-    Internal verification runner. Executes in a background thread.
+    Internal verification runner. Executes synchronously.
     All exceptions are caught and logged — never propagated.
     """
     try:
@@ -385,6 +385,7 @@ def _run_verification(user_prompt: str, ai_response: str, detected_issues: dict)
             missed=missed,
             reasoning=reasoning,
         )
+        return false_positives
 
     except Exception as e:
         # Absolute last-resort catch — never crash, never block
@@ -392,29 +393,22 @@ def _run_verification(user_prompt: str, ai_response: str, detected_issues: dict)
             _print_warning(f"Unexpected error in verification thread: {type(e).__name__}: {e}")
         except Exception:
             pass  # Even print failed — silently swallow
+        return []
 
 
-def verify_bias_async(user_prompt: str, ai_response: str, detected_issues: dict) -> None:
+def verify_bias_sync(user_prompt: str, ai_response: str, detected_issues: dict) -> list[str]:
     """
-    Public entry point. Spawns a daemon background thread to run
-    the LLM verification. Returns immediately — zero blocking.
-
+    Public entry point. Runs the LLM verification synchronously.
+    
     Args:
         user_prompt: The clean user prompt (or empty if n/a).
         ai_response: The generated AI response (or empty if n/a).
         detected_issues: The issues dict from evaluate_bias() (post-filtering).
     """
     # Deep-copy the issues dict so the thread has its own snapshot
-    # (the original may be garbage-collected after Flask sends the response)
     try:
         issues_snapshot = json.loads(json.dumps(detected_issues, default=str))
     except Exception:
         issues_snapshot = {}
 
-    thread = threading.Thread(
-        target=_run_verification,
-        args=(user_prompt, ai_response, issues_snapshot),
-        daemon=True,  # Dies with the main process — no cleanup needed
-        name="llm-bias-verify",
-    )
-    thread.start()
+    return _run_verification(user_prompt, ai_response, issues_snapshot)

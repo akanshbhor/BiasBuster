@@ -38,9 +38,9 @@ except Exception:  # pragma: no cover
     analyze_implicit_bias = None  # type: ignore
 
 try:
-    from llm_verification import verify_bias_async  # type: ignore
+    from llm_verification import verify_bias_sync  # type: ignore
 except Exception:  # pragma: no cover
-    verify_bias_async = None  # type: ignore
+    verify_bias_sync = None  # type: ignore
 
 try:  # pragma: no cover - optional heavy deps
     from sentence_transformers import SentenceTransformer, util, CrossEncoder  # type: ignore
@@ -3135,18 +3135,29 @@ def evaluate_bias():
     for k in keys_to_drop:
         issues.pop(k, None)
 
-    # ── Silent LLM Verification — fire-and-forget background thread ──
-    # The response is sent to the client BEFORE the LLM call begins.
-    if verify_bias_async is not None:
+    # ── Synchronous LLM Verification ──
+    # We await the LLM call to ensure false positives are dropped before returning JSON.
+    if verify_bias_sync is not None:
         try:
             # Try to grab explicit parameters if the frontend starts sending them,
             # otherwise derive them from clean_text based on the context flag.
             user_prompt = data.get("user_prompt", clean_text if not is_ai_response else "")
             ai_resp = data.get("ai_response", clean_text if is_ai_response else "")
             
-            verify_bias_async(user_prompt, ai_resp, issues)
-        except Exception:
-            pass  # Never block the response
+            # Fetch false positives and physically delete them from the payload
+            false_positives = verify_bias_sync(user_prompt, ai_resp, issues)
+            for fp in false_positives:
+                fp_lower = str(fp).strip().lower()
+                keys_to_delete = []
+                for k, issue in issues.items():
+                    bw = str(issue.get("biased_word", k)).strip().lower()
+                    if bw == fp_lower or str(k).strip().lower() == fp_lower:
+                        keys_to_delete.append(k)
+                for k in keys_to_delete:
+                    issues.pop(k, None)
+                    print(f"  [REMOVED] '{k}' from issues dict (LLM Verified FP)")
+        except Exception as e:
+            print(f"Error in LLM verification logic: {e}")
 
     return jsonify(
         {
