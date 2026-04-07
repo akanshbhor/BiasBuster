@@ -30,6 +30,38 @@
     align-items: center;
 }
 
+#state-instructions.active {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#state-instructions .briefing-container {
+    flex: 0 1 auto;
+    min-height: 0;
+    max-width: 1100px;
+    width: 100%;
+    overflow: visible;
+    margin: 0 auto;
+}
+
+#state-instructions .briefing-content {
+    font-size: 0.9rem;
+}
+
+#state-instructions .instructions-list {
+    list-style-type: disc;
+    list-style-position: outside;
+    padding-left: 1.5em;
+    line-height: 2;
+    margin-bottom: 1em;
+}
+
+#state-instructions .instructions-list li {
+    margin-bottom: 0.5em;
+}
+
 #state-game.active {
     flex-direction: column;
 }
@@ -428,36 +460,43 @@ button#btn-start-audit:hover:not(:disabled) {
 }
 
 /* ===== STRICT DIAGNOSTIC & REWARD MONOCHROME ===== */
-#state-diagnostic, #state-reward {
+#state-diagnostic,
+#state-reward {
     color: #000000;
     flex-direction: column;
     gap: 16px;
 }
+
 #state-reward.active {
     justify-content: center;
     flex-grow: 1;
 }
+
 #state-diagnostic .schematic-card,
 #state-diagnostic .outline-hud,
 #state-reward .schematic-card,
 #state-reward .outline-hud {
     border-color: #000000;
 }
+
 #state-diagnostic .outline-hud,
 #state-reward .outline-hud {
     width: 100%;
     box-sizing: border-box;
 }
+
 #state-diagnostic .hud-header,
 #state-reward .hud-header {
     background-color: #f0f0f0;
     color: #000000;
     border-bottom-color: #000000;
 }
+
 #state-diagnostic .hud-content,
 #state-reward .hud-content {
     padding-bottom: 0px;
 }
+
 #state-diagnostic .hud-action-row,
 #state-reward .hud-action-row {
     display: flex;
@@ -467,24 +506,28 @@ button#btn-start-audit:hover:not(:disabled) {
     padding: 15px 20px;
     box-sizing: border-box;
 }
+
 #state-diagnostic .hud-action-row span,
 #state-reward .hud-action-row span {
     font-family: var(--font-mono);
     font-size: 0.85rem;
     font-weight: 500;
 }
+
 #state-diagnostic .schematic-btn,
 #state-reward .schematic-btn {
     border-color: #000000;
     color: #000000;
     cursor: pointer;
 }
+
 #state-diagnostic .schematic-btn:hover,
 #state-reward .schematic-btn:hover {
     background-color: #eeeeee;
     border-color: #333;
     color: #000000;
 }
+
 #state-diagnostic .diag-explanation {
     border: 2px solid #000000;
     border-radius: 4px;
@@ -492,11 +535,13 @@ button#btn-start-audit:hover:not(:disabled) {
     margin-bottom: 10px;
     font-family: var(--font-mono);
 }
+
 #state-diagnostic .feature-checklist-title {
     font-weight: bold;
     margin-bottom: 4px;
     font-family: var(--font-mono);
 }
+
 #state-diagnostic .feature-checklist {
     border-top: 2px solid #000000;
     padding-top: 8px;
@@ -505,10 +550,12 @@ button#btn-start-audit:hover:not(:disabled) {
     gap: 8px 16px;
     font-family: var(--font-mono);
 }
+
 #state-diagnostic .feature-item {
     padding: 4px 8px;
     border-radius: 4px;
 }
+
 #state-diagnostic .feature-item.unchecked {
     background-color: #f5f5f5;
     color: #666666;
@@ -519,6 +566,7 @@ button#btn-start-audit:hover:not(:disabled) {
 #state-playbook {
     flex-direction: column;
 }
+
 .playbook-container {
     background-color: #ffffff;
     color: #000000;
@@ -527,6 +575,7 @@ button#btn-start-audit:hover:not(:disabled) {
     border: 2px solid #000;
     padding-bottom: 16px;
 }
+
 .playbook-header {
     border-bottom: 4px solid #000000;
     padding: 10px 24px;
@@ -536,12 +585,14 @@ button#btn-start-audit:hover:not(:disabled) {
     text-transform: uppercase;
     background-color: #f0f0f0;
 }
+
 .playbook-content {
     padding: 16px 24px;
     font-family: Arial, sans-serif;
     font-size: 0.95rem;
     line-height: 1.6;
 }
+
 .playbook-core-principle {
     font-size: 1.05rem;
     margin-bottom: 12px;
@@ -549,9 +600,11 @@ button#btn-start-audit:hover:not(:disabled) {
     border-left: 4px solid #000000;
     background-color: #f8f8f8;
 }
+
 .playbook-section {
     margin-bottom: 12px;
 }
+
 .playbook-section h3 {
     font-family: var(--font-mono);
     font-size: 1.1rem;
@@ -559,10 +612,12 @@ button#btn-start-audit:hover:not(:disabled) {
     padding-bottom: 4px;
     margin-bottom: 6px;
 }
+
 .playbook-list {
     margin-left: 24px;
     margin-bottom: 8px;
 }
+
 .playbook-list li {
     margin-bottom: 5px;
 }

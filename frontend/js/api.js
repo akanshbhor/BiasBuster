@@ -21,7 +21,7 @@ const isLocalhost =
   window.location.protocol === 'file:';
 
 // If you deploy your backend, replace this with your deployed URL.
-const API_BASE_URL = 'https://biasbuster-backend-9jqiy.ondigitalocean.app';
+const API_BASE_URL = isLocalhost ? 'http://127.0.0.1:5000' : 'https://biasbuster-backend-9jqiy.ondigitalocean.app';
 
 /**
  * Small helper to:

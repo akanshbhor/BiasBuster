@@ -174,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ---- DOM REFS ----
     const stateEls = {
         briefing: document.getElementById('state-briefing'),
+        instructions: document.getElementById('state-instructions'),
         game: document.getElementById('state-game'),
         diagnostic: document.getElementById('state-diagnostic'),
         reward: document.getElementById('state-reward'),
@@ -282,8 +283,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const biasAudio = document.getElementById('bias-audio');
+    const instructionsAudio = document.getElementById('instructions-audio');
+
     if (biasAudio) {
-        biasAudio.addEventListener('ended', initGame);
+        biasAudio.addEventListener('ended', () => {
+            switchState('instructions');
+            if (instructionsAudio) {
+                instructionsAudio.currentTime = 0;
+                instructionsAudio.play().catch(e => console.warn('Instructions audio playback failed:', e));
+            }
+        });
+    }
+
+    if (instructionsAudio) {
+        instructionsAudio.addEventListener('ended', initGame);
     }
 
     function renderCandidate() {
@@ -487,6 +500,16 @@ document.addEventListener('DOMContentLoaded', function () {
             if (stateEls.briefing && stateEls.briefing.classList.contains('active')) {
                 console.log("DEV SHORTCUT: Briefing skipped.");
                 if (biasAudio) biasAudio.pause();
+                switchState('instructions');
+                if (instructionsAudio) {
+                    instructionsAudio.currentTime = 0;
+                    instructionsAudio.play().catch(e => console.warn('Instructions audio playback failed:', e));
+                }
+                return;
+            }
+            if (stateEls.instructions && stateEls.instructions.classList.contains('active')) {
+                console.log("DEV SHORTCUT: Instructions skipped.");
+                if (instructionsAudio) { instructionsAudio.pause(); instructionsAudio.currentTime = 0; }
                 initGame();
                 return;
             }

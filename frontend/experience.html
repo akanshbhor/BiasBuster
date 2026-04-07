@@ -70,6 +70,38 @@
             <!-- Briefing Audio (auto-plays on load) -->
             <audio id="bias-audio" src="./assets/briefing.mp3" autoplay></audio>
 
+            <!-- ===== STATE 1.5: INSTRUCTIONS (shown after briefing audio) ===== -->
+            <div id="state-instructions" class="game-state"
+                style="padding: 16px; justify-content: center; align-items: center; overflow: hidden;">
+                <section class="briefing-container">
+                    <h1 class="briefing-title">Simulation Guidelines: Human-in-the-Loop Protocol</h1>
+
+                    <div class="briefing-content">
+                        <p>
+                            Read carefully. The clock starts the moment you enter the simulation.
+                        </p>
+                        <ul class="instructions-list">
+                            <li>You are the Human-in-the-Loop Auditor. The AI has already screened 10 candidates for a
+                                Senior Developer role.</li>
+                            <li>Review each profile and click AGREE WITH AI or OVERRIDE AI.</li>
+                            <li>You have 60 seconds. If the timer hits zero, the audit is terminated.</li>
+                            <li>The AI uses proxy variables like graduation years, email domains, zip codes, gendered
+                                club names to mask discrimination. Spot them.</li>
+                            <li>Not every AI decision is wrong. Overriding a correct call counts against you.</li>
+                            <li>Precision under pressure. That is the mission.</li>
+                        </ul>
+                        <p style="margin-top: 1.2em; border-left: 3px solid #000; padding-left: 1em; line-height: 1.7;">
+                            PROXY EXAMPLE: An AI might reject a candidate from the "Class of 1998" not because they lack
+                            coding skills, but because the system secretly correlated older graduation dates with higher
+                            corporate healthcare costs. You must catch these hidden correlations.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Instruction Audio (auto-plays when instructions screen is shown) -->
+                <audio id="instructions-audio" src="./assets/instructions.mp3"></audio>
+            </div>
+
             <!-- ===== STATE 2: ACTIVE GAME (hidden until audio ends) ===== -->
             <div id="state-game" class="game-state"
                 style="padding: 12px; gap: 8px; height: 100%; box-sizing: border-box; overflow: hidden;">
@@ -80,10 +112,12 @@
 
                 <!-- 2. The Candidate Dossier -->
                 <!-- Card Slot -->
-                <section class="schematic-card" id="card-container" style="flex: 1; margin: 0; position: relative; overflow: hidden;">
+                <section class="schematic-card" id="card-container"
+                    style="flex: 1; margin: 0; position: relative; overflow: hidden;">
                     <div id="active-card" style="display: flex; flex-direction: column; width: 100%; height: 100%;">
                         <div class="dossier-header-row">
-                            <div class="dossier-header-box">CANDIDATE DOSSIER: <span id="candidate-progress-header">1/10</span></div>
+                            <div class="dossier-header-box">CANDIDATE DOSSIER: <span
+                                    id="candidate-progress-header">1/10</span></div>
                             <div id="ai-badge" class="ai-decision-banner">
                                 REJECTED
                             </div>
@@ -116,11 +150,14 @@
                                 <div class="dossier-right-bottom">
                                     <div class="nested-col">
                                         <div class="section-label">GRADUATION YEAR</div>
-                                        <div id="candidate-grad" class="section-content" style="border: 1px solid var(--navy); padding: 6px; flex: 1;">2019</div>
+                                        <div id="candidate-grad" class="section-content"
+                                            style="border: 1px solid var(--navy); padding: 6px; flex: 1;">2019</div>
                                     </div>
                                     <div class="nested-col">
                                         <div class="section-label">UNIVERSITY</div>
-                                        <div id="candidate-university" class="section-content" style="border: 1px solid var(--navy); padding: 6px; flex: 1;">State Tech College</div>
+                                        <div id="candidate-university" class="section-content"
+                                            style="border: 1px solid var(--navy); padding: 6px; flex: 1;">State Tech
+                                            College</div>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +202,8 @@
 
                     <div class="diag-explanation">
                         <strong>Bias Detected:</strong> The AI was rejecting highly qualified candidates while
-                        approving under-qualified ones. Because our historical training data skewed young and privileged, the AI
+                        approving under-qualified ones. Because our historical training data skewed young and
+                        privileged, the AI
                         learned to use proxies for capability.
                     </div>
 
@@ -175,10 +213,13 @@
                     <div class="feature-checklist">
                         <div class="feature-item"><input type="checkbox" checked id="feature-name"> Candidate Name</div>
                         <div class="feature-item"><input type="checkbox" checked id="feature-gender"> Gender</div>
-                        <div class="feature-item"><input type="checkbox" checked id="feature-exp"> Years of Experience</div>
-                        <div class="feature-item"><input type="checkbox" checked id="feature-skills"> Technical Skills</div>
+                        <div class="feature-item"><input type="checkbox" checked id="feature-exp"> Years of Experience
+                        </div>
+                        <div class="feature-item"><input type="checkbox" checked id="feature-skills"> Technical Skills
+                        </div>
                         <div class="feature-item"><input type="checkbox" checked id="feature-email"> Email Domain</div>
-                        <div class="feature-item"><input type="checkbox" checked id="feature-grad"> Graduation Year</div>
+                        <div class="feature-item"><input type="checkbox" checked id="feature-grad"> Graduation Year
+                        </div>
                         <div class="feature-item"><input type="checkbox" checked id="feature-univ"> University</div>
                     </div>
                 </section>
@@ -230,25 +271,35 @@
                     </div>
                     <div class="playbook-content">
                         <p class="playbook-core-principle">
-                            <strong>Core Principle:</strong> Correlation does not equal qualification. AI models are highly efficient at finding patterns, but without human oversight, they will optimize for historical biases and systemic inequalities.
+                            <strong>Core Principle:</strong> Correlation does not equal qualification. AI models are
+                            highly efficient at finding patterns, but without human oversight, they will optimize for
+                            historical biases and systemic inequalities.
                         </p>
-                        
+
                         <div class="playbook-section">
                             <h3>The Proxy Threat</h3>
                             <ul class="playbook-list">
-                                <li><strong>Ageism Proxies:</strong> Legacy email domains (@aol.com) and distant graduation years are often used to filter out older, highly experienced workers.</li>
-                                <li><strong>Pedigree & Class Bias:</strong> Over-indexing on elite universities or affluent extracurriculars while ignoring proven skills from non-traditional pathways (bootcamps).</li>
-                                <li><strong>Caregiver Penalties:</strong> Treating resume gaps purely as "attrition risk," which disproportionately penalizes women and family caregivers.</li>
-                                <li><strong>Cultural & Racial Bias:</strong> Filtering candidates based on non-Western names or international universities due to skewed historical training data.</li>
+                                <li><strong>Ageism Proxies:</strong> Legacy email domains (@aol.com) and distant
+                                    graduation years are often used to filter out older, highly experienced workers.
+                                </li>
+                                <li><strong>Pedigree & Class Bias:</strong> Over-indexing on elite universities or
+                                    affluent extracurriculars while ignoring proven skills from non-traditional pathways
+                                    (bootcamps).</li>
+                                <li><strong>Caregiver Penalties:</strong> Treating resume gaps purely as "attrition
+                                    risk," which disproportionately penalizes women and family caregivers.</li>
+                                <li><strong>Cultural & Racial Bias:</strong> Filtering candidates based on non-Western
+                                    names or international universities due to skewed historical training data.</li>
                             </ul>
                         </div>
-                        
+
                         <div class="playbook-section">
                             <h3>The Auditor's Checklist (Actionable Takeaways)</h3>
                             <ol class="playbook-list">
                                 <li><strong>Demand Explainability</strong> (Never accept "Computer Says No").</li>
-                                <li><strong>Audit the Training Features</strong> (Strip out protected class proxies).</li>
-                                <li><strong>Isolate Objective Metrics</strong> (Focus strictly on technical skills and years of experience).</li>
+                                <li><strong>Audit the Training Features</strong> (Strip out protected class proxies).
+                                </li>
+                                <li><strong>Isolate Objective Metrics</strong> (Focus strictly on technical skills and
+                                    years of experience).</li>
                             </ol>
                         </div>
                     </div>
@@ -275,7 +326,7 @@
             </div>
         </footer>
     </div>
-    
+
     <!-- Audio Elements for AI Decisions -->
     <audio id="audio-accepted" src="./assets/accepted_audio.mp3"></audio>
     <audio id="audio-rejected" src="./assets/rejected_audio.mp3"></audio>
