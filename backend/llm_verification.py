@@ -7,15 +7,14 @@ keywords against a large language model to confirm accuracy and catch
 subtle proxies the lexicon engine may have missed.
 
 Design constraints:
-- Zero frontend impact — runs in a daemon background thread
-- Terminal-only output — never sends data back to the client
+- Synchronous execution — blocks the /api/evaluate response until complete
+- Returns false_positives list so the caller can remove them from the payload
 - Dual-model failover — GPT-OSS-120B primary → Llama 3.3 70B fallback
 - Graceful failure — swallows all errors, logs warnings, never crashes
 """
 
 import json
 import os
-import threading
 import time
 from typing import Optional
 
@@ -331,7 +330,7 @@ def _run_verification(user_prompt: str, ai_response: str, detected_issues: dict)
     try:
         # Don't verify if both are empty
         if not (user_prompt.strip() or ai_response.strip()):
-            return
+            return []
 
         start_time = time.time()
 
@@ -346,7 +345,7 @@ def _run_verification(user_prompt: str, ai_response: str, detected_issues: dict)
                 f"Both models failed or unavailable. "
                 f"Verification skipped — core detection results are unaffected."
             )
-            return
+            return []
 
         latency = time.time() - start_time
 
@@ -358,7 +357,7 @@ def _run_verification(user_prompt: str, ai_response: str, detected_issues: dict)
                 f"LLM returned unparseable response ({model_used}). "
                 f"Raw output logged below:\n{raw_response[:300]}"
             )
-            return
+            return []
 
         # Extract fields with safe defaults
         confirmed = parsed.get("confirmed", [])

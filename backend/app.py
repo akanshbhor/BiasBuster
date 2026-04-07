@@ -3135,17 +3135,22 @@ def evaluate_bias():
     for k in keys_to_drop:
         issues.pop(k, None)
 
-    # ── Synchronous LLM Verification ──
-    # We await the LLM call to ensure false positives are dropped before returning JSON.
+    # ── Synchronous LLM Verification (BLOCKING) ──
+    # The endpoint HALTS here until verify_bias_sync returns.
+    # Only AFTER false positives are removed do we build the JSON response.
     if verify_bias_sync is not None:
         try:
-            # Try to grab explicit parameters if the frontend starts sending them,
-            # otherwise derive them from clean_text based on the context flag.
             user_prompt = data.get("user_prompt", clean_text if not is_ai_response else "")
             ai_resp = data.get("ai_response", clean_text if is_ai_response else "")
-            
-            # Fetch false positives and physically delete them from the payload
+
+            print(f"  [BLOCKING] LLM verification starting — response is HELD...")
             false_positives = verify_bias_sync(user_prompt, ai_resp, issues)
+            print(f"  [BLOCKING] LLM verification complete — got {len(false_positives or [])} false positives")
+
+            # Null-safe: treat None as empty list
+            if not isinstance(false_positives, list):
+                false_positives = []
+
             for fp in false_positives:
                 fp_lower = str(fp).strip().lower()
                 keys_to_delete = []
@@ -3154,10 +3159,12 @@ def evaluate_bias():
                     if bw == fp_lower or str(k).strip().lower() == fp_lower:
                         keys_to_delete.append(k)
                 for k in keys_to_delete:
-                    issues.pop(k, None)
+                    del issues[k]
                     print(f"  [REMOVED] '{k}' from issues dict (LLM Verified FP)")
+
+            print(f"  [BLOCKING] Final issues count after FP removal: {len(issues)}")
         except Exception as e:
-            print(f"Error in LLM verification logic: {e}")
+            print(f"  [ERROR] LLM verification logic failed: {e}")
 
     return jsonify(
         {
