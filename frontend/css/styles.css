@@ -750,6 +750,7 @@ footer {
     margin-bottom: 8px;
 }
 
+
 /* --- 8. Dynamic Patch Modal --- */
 .patch-modal {
     display: none;
@@ -799,9 +800,29 @@ footer {
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
+/* Information Page Action Buttons */
+.info-action-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+    color: inherit;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    font-family: monospace;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.info-action-btn:hover {
+    background-color: #f2f2f2;
+}
+
 .modal-btn:hover {
     background-color: #d4d4d4;
 }
+
 
 .modal-btn:active {
     transform: scale(0.98);
