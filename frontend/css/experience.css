@@ -39,13 +39,12 @@
 
 #state-instructions .briefing-container {
     flex: 0 1 auto;
-    height: auto;
+    height: max-content;
     min-height: 0;
     max-width: 1100px;
     width: 100%;
-    overflow-y: auto;
+    overflow: hidden;
     margin: 0 auto;
-    padding-bottom: 2rem;
 }
 
 #state-instructions .briefing-content {
