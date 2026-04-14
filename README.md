@@ -81,7 +81,7 @@ A lightweight, fast, vanilla web interface optimized for edge deployment. It is 
 ## Local Installation & Setup
 
 ### Prerequisites
-* Python 3.9+
+* Python 3.13.12
 * Node.js (Optional, for frontend serving)
 * Docker (Optional, to mirror production build)
 
