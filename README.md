@@ -133,3 +133,12 @@ A lightweight, fast, vanilla web interface optimized for edge deployment. It is 
 | `/api/generate/qwen`  | `POST` | Generates a response using the Qwen 3.0 32B model. |
 | `/api/generate/gptoss`| `POST` | Generates a response using the GPT-OSS 120B model. |
 | `/api/feedback` | `POST` | Active learning endpoint; flags user-submitted false positives/negatives to SQLite. |
+
+---
+
+## License & Copyright
+
+The source code for this project is licensed under the **Apache License 2.0**. You may use, distribute, and modify the code under the terms of this license. 
+
+### Trademark Disclaimer
+"BiasBuster" and the BiasBuster logo are intended trademarks of the repository owner. The Apache License 2.0 explicitly **does not** grant any rights to use these trade names, trademarks, service marks, or product names. Any commercial product or service utilizing this software must be rebranded and cannot use the "BiasBuster" name or imply endorsement without explicit, written permission.
