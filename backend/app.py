@@ -194,11 +194,14 @@ def _init_chroma_rules():
 import subprocess as _bootstrap_subprocess  # noqa: E402 — must be available before venv check
 
 BASE_DIR = Path(__file__).resolve().parent
-ROOT_VENV_PYTHON = BASE_DIR.parent / "venv" / "Scripts" / "python.exe"
-BACKEND_VENV_PYTHON = BASE_DIR / "venv" / "Scripts" / "python.exe"
+# Cross-platform venv detection: Windows uses Scripts/python.exe, Unix uses bin/python
+if sys.platform == "win32":
+    ROOT_VENV_PYTHON = BASE_DIR.parent / "venv" / "Scripts" / "python.exe"
+    BACKEND_VENV_PYTHON = BASE_DIR / "venv" / "Scripts" / "python.exe"
+else:
+    ROOT_VENV_PYTHON = BASE_DIR.parent / "venv" / "bin" / "python"
+    BACKEND_VENV_PYTHON = BASE_DIR / "venv" / "bin" / "python"
 
-# --- DEBUG instrumentation (temporary) ---
-# Writes NDJSON lines to project root debug-4f8e4d.log (no secrets).
 # Only auto-reexec when launched as a script file (not `python -c`, not `python -m`),
 # otherwise re-exec will lose the original command and can break tooling/imports.
 argv0 = sys.argv[0] if sys.argv else ""
@@ -253,15 +256,29 @@ try:
     from flask_cors import CORS  # type: ignore
 except ModuleNotFoundError as e:
     if str(e).startswith("No module named 'flask'"):
+        _this_dir = os.path.dirname(os.path.abspath(__file__))
+        if sys.platform == "win32":
+            _venv_hint = (
+                "Fix (recommended):\n"
+                f"  1) cd {_this_dir}\n"
+                "  2) .\\venv\\Scripts\\python app.py\n\n"
+                "If venv does not exist, create it and install deps:\n"
+                "  python -m venv .\\venv\n"
+                "  .\\venv\\Scripts\\python -m pip install -r requirements.txt\n"
+            )
+        else:
+            _venv_hint = (
+                "Fix (recommended):\n"
+                f"  1) cd {_this_dir}\n"
+                "  2) ./venv/bin/python app.py\n\n"
+                "If venv does not exist, create it and install deps:\n"
+                "  python3 -m venv ./venv\n"
+                "  ./venv/bin/python -m pip install -r requirements.txt\n"
+            )
         print(
             "\nERROR: Flask is not installed for this Python interpreter.\n"
             f"Python in use: {os.sys.executable}\n\n"
-            "Fix (recommended):\n"
-            "  1) cd C:\\BiasBuster\\backend\n"
-            "  2) .\\venv\\Scripts\\python app.py\n\n"
-            "If venv does not exist, create it and install deps:\n"
-            "  python -m venv .\\venv\n"
-            "  .\\venv\\Scripts\\python -m pip install -r requirements.txt\n"
+            + _venv_hint
         )
         raise
     raise
@@ -274,7 +291,7 @@ No LLM/ML providers are required for bias evaluation.
 """
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 # Accept both `/path` and `/path/` to avoid frontend/back-end slash mismatches.
 app.url_map.strict_slashes = False
 
@@ -1780,7 +1797,7 @@ def _find_bias_issues_explicit(text: str, db_rows: list[dict], is_ai_response: b
                 "end": end
             })
 
-    # ── Fix 1 (Simplified): Pass clean text through FAISS ──
+    # Pass clean text through FAISS semantic index for Tier 2 detection
     # Since typo correction now happens upstream, we only need to run
     # the FAISS Cross-Encoder checks on the clean text tokens that
     # are not explicit regex matches.
@@ -1859,7 +1876,7 @@ def _find_bias_issues_explicit(text: str, db_rows: list[dict], is_ai_response: b
 
                 print(f"[DEBUG FAISS HYDRATED] Token: {original_raw_token}, Concept: {final_concept}, Start: {start}, End: {end}")
 
-    # ── Fix 2: Full-Sentence RAG Fallback ──
+    # Full-Sentence RAG Fallback:
     # If the token-level extraction yields 0 issues, run the full raw text
     # through the ChromaDB Semantic RAG engine to catch non-noun-anchored microaggressions.
     # ONLY perform this forceful bypass on user prompts, NOT AI responses, to avoid defeating L2 on long texts.
@@ -2675,7 +2692,7 @@ def _spellcheck_and_build_clean(text: str, db_rows) -> tuple[str, list[dict]]:
         if len(_tw) >= 3:
             _trigger_set.add(_tw)
 
-    # ── Fix: Add implicit lexicon terms to trigger set ──
+    # Add implicit lexicon terms to trigger set
     try:
         from implicit_bias_scorer import agentic_words, communal_words
         for _tw in agentic_words + communal_words:
@@ -2828,13 +2845,13 @@ def evaluate_bias():
     # HYBRID EVALUATION ARCHITECTURE
     db_rows = _load_bias_database_rows()
     
-    # ── Pipeline Refactor: Run Spellcheck FIRST to build a Clean Input ──
+    # Run Spellcheck FIRST to build a Clean Input
     clean_text, typos = _spellcheck_and_build_clean(raw_text, db_rows)
 
     # 1. User Prompt AND AI Response -> Explicit Lexicon Match (Run on clean_text)
     issues = _find_bias_issues_explicit(clean_text, db_rows, is_ai_response=is_ai_response)
 
-    # ── Fix: Inject typing issues directly into the `issues` map so the frontend renders spelling corrections ──
+    # Inject typing issues into the `issues` map so the frontend renders spelling corrections
     for t in typos:
         orig = t["original"]
         sugg = t["suggested"]
@@ -2965,7 +2982,7 @@ def evaluate_bias():
     # Semantic false-positive filter: suppress soft-skill words in non-workplace contexts
     issues = filter_false_positives(issues, clean_text)
 
-    # ── Fix 2: Typo bypass for L1 spaCy verifier and L2 Cross-Encoder ──
+    # Typo bypass for L1 spaCy verifier and L2 Cross-Encoder
     # For very short prompts (1-2 words) or typo-embedded matches, the sentence-level
     # models lack context and would incorrectly reject valid bias terms.
     prompt_word_count = len(clean_text.split())
@@ -3140,7 +3157,7 @@ def evaluate_bias():
     for k in keys_to_drop:
         issues.pop(k, None)
 
-    # ── Synchronous LLM Verification (BLOCKING) ──
+    # ── Synchronous LLM Verification ──
     # The endpoint HALTS here until verify_bias_sync returns.
     # Only AFTER false positives are removed and missed biases ingested do we build the JSON response.
     #
@@ -3425,5 +3442,5 @@ if __name__ == '__main__':
         _init_faiss_index(_startup_db_rows)
     except Exception as _init_err:
         print(f"WARNING: FAISS startup init failed: {_init_err}")
-    port = int(os.environ.get("PORT", 8080))
+    port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)

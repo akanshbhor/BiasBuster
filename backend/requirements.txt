@@ -13,3 +13,5 @@ nltk
 faiss-cpu
 gunicorn 
 pyspellchecker
+transformers
+numpy

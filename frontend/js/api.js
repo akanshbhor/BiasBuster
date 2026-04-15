@@ -79,7 +79,7 @@ window.fetchUnifiedAIResponse = async function fetchUnifiedAIResponse(promptText
               : '/api/generate/gemini';
 
     const result = await postJson(endpoint, { prompt: promptText });
-    console.log("[DEBUG API PARSED RESULT] ", result);
+
     
     if (!result.ok) {
         if (result.status === 429) {
@@ -108,9 +108,9 @@ window.evaluateForBias = async function evaluateForBias(text, is_ai_response = f
 
     const is_biased = result.data?.is_biased || false;
     const issues = result.data?.issues || {};
-    const typos = result.data?.typos || []; // ADD THIS LINE
+    const typos = result.data?.typos || [];
 
-    return { is_biased, issues, typos }; // UPDATE THIS LINE
+    return { is_biased, issues, typos };
   } catch (error) {
     return { is_biased: false, issues: {}, error: error.message };
   }
