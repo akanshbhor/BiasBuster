@@ -93,7 +93,7 @@ A lightweight, fast, vanilla web interface optimized for edge deployment. It is 
 2. Create and activate a virtual environment:
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: .\venv\Scripts\activate
+   .\venv\Scripts\activate  # On Mac: source venv/bin/activate
    ```
 3. Install Python dependencies:
    ```bash
