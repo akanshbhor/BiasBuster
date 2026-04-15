@@ -3273,20 +3273,36 @@ def generate_gemini():
         # Explicitly pass the API key — genai.Client() defaults to GOOGLE_API_KEY,
         # but our .env stores it as GEMINI_API_KEY.
         client = genai.Client(api_key=api_key)
-        response = client.models.generate_content(
-            model="gemini-2.0-flash",
-            contents=(
-                "You are a helpful, intelligent assistant. "
-                "Provide a direct, factual, and useful answer to the user's prompt.\n\n"
-                f"{user_text}"
-            ),
-        )
+        
+        max_retries = 3
+        base_delay = 1.0
+        response = None
+        
+        for attempt in range(max_retries):
+            try:
+                response = client.models.generate_content(
+                    model="gemini-2.0-flash",
+                    contents=(
+                        "You are a helpful, intelligent assistant. "
+                        "Provide a direct, factual, and useful answer to the user's prompt.\n\n"
+                        f"{user_text}"
+                    ),
+                )
+                break
+            except Exception as e:
+                err_str = str(e).lower()
+                if "quota" in err_str or "rate" in err_str or "429" in err_str or "exhausted" in err_str:
+                    if attempt < max_retries - 1:
+                        time.sleep(base_delay * (2 ** attempt))
+                        continue
+                raise
 
         rewritten = getattr(response, "text", "") or ""
         if not rewritten:
             # Some responses embed text inside candidates
             try:
-                rewritten = response.candidates[0].content.parts[0].text or ""
+                if response and response.candidates and response.candidates[0].content and response.candidates[0].content.parts:
+                    rewritten = response.candidates[0].content.parts[0].text or ""
             except Exception:
                 rewritten = ""
 

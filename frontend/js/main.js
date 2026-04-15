@@ -836,6 +836,28 @@ document.addEventListener('DOMContentLoaded', () => {
         // Save original text for later re-evaluation
         aiMessageDiv.dataset.originalText = realResponse;
 
+        if (realResponse.startsWith("Error 429:")) {
+            aiMessageDiv.remove();
+            
+            // Create and show a user-friendly toast banner
+            const toast = document.createElement('div');
+            toast.className = 'bias-alert-banner severity-high';
+            toast.style.cssText = 'position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; padding: 12px 24px; border-radius: 8px; font-weight: bold; background-color: #fef2f2; color: #b91c1c; border: 1px solid #f87171; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); width: auto; max-width: 90%; text-align: center;';
+            toast.innerHTML = `⚠️ ${realResponse.substring(10).trim()}`;
+            document.body.appendChild(toast);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (document.body.contains(toast)) {
+                    toast.style.opacity = '0';
+                    toast.style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => toast.remove(), 500);
+                }
+            }, 5000);
+            
+            return;
+        }
+
         if (realResponse.startsWith("Error:") || realResponse.includes("System Error:")) {
             aiMessageDiv.querySelector('.ai-text-content').innerHTML = realResponse.replace(/\n/g, '<br>');
             chatArea.scrollTop = chatArea.scrollHeight;

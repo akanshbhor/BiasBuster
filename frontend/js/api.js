@@ -47,7 +47,7 @@ async function postJson(path, body) {
   if (!response.ok) {
     const message = data?.error || `HTTP ${response.status}`;
     window.dispatchEvent(new CustomEvent('bb:net', { detail: { phase: 'error', path, status: response.status } }));
-    return { ok: false, error: message, data };
+    return { ok: false, error: message, data, status: response.status };
   }
 
   window.dispatchEvent(new CustomEvent('bb:net', { detail: { phase: 'success', path, status: response.status } }));
@@ -78,7 +78,12 @@ window.fetchUnifiedAIResponse = async function fetchUnifiedAIResponse(promptText
               : '/api/generate/gemini';
 
     const result = await postJson(endpoint, { prompt: promptText });
-    if (!result.ok) return `Error: ${model.toUpperCase()} - ${result.error}`;
+    if (!result.ok) {
+        if (result.status === 429) {
+            return `Error 429: ${model.toUpperCase()} - ${result.error}`;
+        }
+        return `Error: ${model.toUpperCase()} - ${result.error}`;
+    }
 
     const text = result.data?.text;
     if (typeof text !== 'string') return `Error: ${model.toUpperCase()} - Missing 'text' in response.`;
