@@ -3281,7 +3281,7 @@ def generate_gemini():
         for attempt in range(max_retries):
             try:
                 response = client.models.generate_content(
-                    model="gemini-2.0-flash",
+                    model="gemini-3-flash-preview",
                     contents=(
                         "You are a helpful, intelligent assistant. "
                         "Provide a direct, factual, and useful answer to the user's prompt.\n\n"
@@ -3297,7 +3297,13 @@ def generate_gemini():
                         continue
                 raise
 
-        rewritten = getattr(response, "text", "") or ""
+        print(f"[DEBUG GEMINI RESPONSE RAW] {response}")
+        try:
+            rewritten = response.text or ""
+        except Exception:
+            rewritten = ""
+            
+        print(f"[DEBUG GEMINI EXTRACTED TEXT] {repr(rewritten)}")
         if not rewritten:
             # Some responses embed text inside candidates
             try:

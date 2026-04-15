@@ -40,6 +40,7 @@ async function postJson(path, body) {
   let data;
   try {
     data = await response.json();
+    console.log("[DEBUG API RAW JSON] ", data);
   } catch (e) {
     data = { error: 'Invalid JSON from server.' };
   }
@@ -78,6 +79,8 @@ window.fetchUnifiedAIResponse = async function fetchUnifiedAIResponse(promptText
               : '/api/generate/gemini';
 
     const result = await postJson(endpoint, { prompt: promptText });
+    console.log("[DEBUG API PARSED RESULT] ", result);
+    
     if (!result.ok) {
         if (result.status === 429) {
             return `Error 429: ${model.toUpperCase()} - ${result.error}`;
